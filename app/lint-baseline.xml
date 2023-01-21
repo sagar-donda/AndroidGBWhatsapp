@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="6" by="lint 7.2.0" type="baseline" client="gradle" dependencies="false" name="AGP (7.2.0)" variant="fatal" version="7.2.0">
+
+    <issue
+        id="UnknownId"
+        message="The id &quot;`banner_container`&quot; is not defined anywhere."
+        errorLine1="        android:layout_above=&quot;@+id/banner_container&quot;"
+        errorLine2="        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/gbv_edit_message.xml"
+            line="55"
+            column="9"/>
+    </issue>
+
+    <issue
+        id="NotSibling"
+        message="`@+id/top` is not a sibling in the same `RelativeLayout`"
+        errorLine1="                android:layout_below=&quot;@+id/top&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/gbv_activity_chat_profile.xml"
+            line="64"
+            column="17"/>
+    </issue>
+
+    <issue
+        id="NotSibling"
+        message="`@+id/top` is not a sibling in the same `RelativeLayout`"
+        errorLine1="                android:layout_below=&quot;@+id/top&quot;"
+        errorLine2="                ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~">
+        <location
+            file="src/main/res/layout/gbv_edit_chat_user_profile.xml"
+            line="65"
+            column="17"/>
+    </issue>
+
+</issues>

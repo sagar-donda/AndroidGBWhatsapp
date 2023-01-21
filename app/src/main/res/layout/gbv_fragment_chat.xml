@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ListView
+            android:id="@+id/userlist"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/txt_no_chats"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="No Chats Available"
+        android:textColor="#667781"
+        android:textSize="@dimen/_15sdp"
+        android:fontFamily="@font/robotomedium"
+        app:layout_constraintBottom_toTopOf="@+id/txt_no_data"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <FrameLayout
+        android:id="@+id/txt_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#F2FDF0"
+        android:layout_alignParentBottom="true"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/material_design_android_floating_action_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/fmsg"
+            app:fab_colorNormal="#00A884"
+            app:fab_colorPressed="#22B24C"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/ll_no_data"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_75sdp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_75sdp"
+                android:gravity="center_vertical"
+                android:paddingStart="@dimen/_25sdp"
+                android:text="Start a chat"
+                android:textColor="#346458"
+                android:textSize="@dimen/_15sdp"
+                android:fontFamily="@font/robotomedium"/>
+
+            <ImageView
+                android:layout_width="@dimen/_75sdp"
+                android:layout_height="@dimen/_75sdp"
+                android:padding="@dimen/_15sdp"
+                android:src="@drawable/ic_right"
+                android:tint="@color/colorAccent"/>
+        </LinearLayout>
+    </FrameLayout>
+</RelativeLayout>

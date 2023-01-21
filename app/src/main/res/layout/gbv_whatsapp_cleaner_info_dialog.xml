@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/_25sdp"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:justificationMode="inter_word"
+            android:letterSpacing="0.05"
+            android:lineSpacingExtra="2dp"
+            android:text="@string/clearCatch"
+            android:textColor="@color/colorAccent"
+            android:textSize="@dimen/_10sdp"
+            android:fontFamily="@font/robotomedium"/>
+
+        <ImageView
+            android:id="@+id/btncancel"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_gravity="right|bottom"
+            android:adjustViewBounds="true"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:src="@drawable/btn_cancel" />
+    </LinearLayout>
+
+</FrameLayout>

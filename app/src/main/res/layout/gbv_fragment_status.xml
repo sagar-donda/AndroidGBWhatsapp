@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+       android:background="@color/colorPrimary">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginHorizontal="@dimen/_50sdp"
+        android:fontFamily="@font/robotomedium"
+        android:gravity="center"
+        android:textColor="@color/black"
+        android:justificationMode="inter_word"
+        android:text="We are still working on this feature to provide you better experience."
+        android:textSize="@dimen/_15sdp" />
+</RelativeLayout>

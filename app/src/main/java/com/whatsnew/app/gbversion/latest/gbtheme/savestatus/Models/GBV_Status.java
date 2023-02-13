@@ -46,7 +46,4 @@ public class GBV_Status {
         return isVideo;
     }
 
-    public void setVideo(boolean video) {
-        isVideo = video;
-    }
 }

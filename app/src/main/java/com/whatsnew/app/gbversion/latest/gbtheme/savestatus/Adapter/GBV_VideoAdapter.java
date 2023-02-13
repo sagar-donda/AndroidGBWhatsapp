@@ -19,18 +19,17 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-
-import java.util.List;
-
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
 
+import java.util.List;
+
 public class GBV_VideoAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
 
     private final List<GBV_Status> videoList;
-    private Context context;
     private final RelativeLayout container;
+    private Context context;
 
     public GBV_VideoAdapter(List<GBV_Status> videoList, RelativeLayout container) {
         this.videoList = videoList;

@@ -100,16 +100,4 @@ public class GBV_AppPackageNameUtils {
         }
     }
 
-    public static boolean checkConnectivity(Context context) {
-        try {
-            NetworkInfo activeNetworkInfo = ((ConnectivityManager) context.getSystemService("connectivity")).getActiveNetworkInfo();
-            if (activeNetworkInfo == null) {
-                return false;
-            }
-            activeNetworkInfo.getState();
-            return activeNetworkInfo.isConnected();
-        } catch (Exception unused) {
-            return false;
-        }
-    }
 }

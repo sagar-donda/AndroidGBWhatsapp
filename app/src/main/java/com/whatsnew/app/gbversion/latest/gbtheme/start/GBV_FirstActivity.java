@@ -23,7 +23,7 @@ public class GBV_FirstActivity extends GBV_BaseActivity {
         findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GBV_FirstActivity.this, GBV_DashBoardActivity.class));
+                startActivity(new Intent(GBV_FirstActivity.this, GBV_MainActivity.class));
             }
         });
     }

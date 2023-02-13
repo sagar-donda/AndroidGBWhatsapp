@@ -24,7 +24,7 @@ public class GBV_PageAdapter extends FragmentPagerAdapter {
 
         if (position == 1) {
             return new GBV_VideoFragment();
-        }else if (position == 2)
+        } else if (position == 2)
             return new GBV_SavedFilesFragment();
         return new GBV_ImageFragment();
 

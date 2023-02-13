@@ -9,18 +9,22 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/header"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:padding="@dimen/_7sdp"
-            android:src="@drawable/back"
-            android:tint="@color/colorAccent" />
+            android:layout_marginStart="@dimen/_5sdp"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,21 +35,31 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/sbold"
                 android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="Repeater"
-                android:textColor="@color/colorAccent"
-                  android:textSize="@dimen/_17sdp"
-               android:fontFamily="@font/robotobold" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/setting"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -63,49 +77,42 @@
             android:layout_marginEnd="@dimen/_10sdp"
             android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:orientation="vertical"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="5dp"
-                app:cardUseCompatPadding="false"
-                app:layout_constraintTop_toBottomOf="@+id/header" />
-
             <RelativeLayout
                 android:id="@+id/rl_input"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_40sdp"
-                android:background="@drawable/etbg">
+                android:background="@drawable/editbg">
 
                 <EditText
                     android:id="@+id/inputText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
                     android:layout_gravity="start"
                     android:background="@null"
-                    android:fontFamily="@font/robotomedium"
+                    android:fontFamily="@font/sbold"
                     android:hint="@string/repeatText"
                     android:paddingHorizontal="@dimen/_15sdp"
                     android:paddingVertical="@dimen/_10sdp"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#7F7F7F"
+                    android:textSize="12sp" />
             </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/ll_repeat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:orientation="horizontal"
-                android:weightSum="2"
                 app:layout_constraintTop_toBottomOf="@+id/rl_input">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="@dimen/_200sdp"
                     android:layout_height="@dimen/_40sdp"
-                    android:layout_weight="0.8"
-                    android:background="@drawable/etbg"
+                    android:layout_gravity="center"
+                    android:background="@drawable/editbg"
                     android:gravity="center_vertical"
                     android:orientation="vertical">
 
@@ -116,27 +123,29 @@
                         android:layout_gravity="center_horizontal"
                         android:layout_marginTop="0dp"
                         android:background="@android:color/transparent"
-                        android:fontFamily="@font/robotomedium"
+                        android:fontFamily="@font/sbold"
                         android:hint="@string/noOfRepeatText"
                         android:inputType="number"
                         android:paddingVertical="@dimen/_10sdp"
                         android:paddingStart="@dimen/_15sdp"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textColor="@color/black"
+                        android:textColorHint="#7F7F7F"
+                        android:textSize="12sp" />
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center|end"
-                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_40sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_marginTop="2dp"
                     android:orientation="vertical">
 
                     <ImageView
                         android:id="@+id/convertEmojeeBtn"
-                        android:layout_width="wrap_content"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center|end|right"
-                        android:layout_marginHorizontal="@dimen/_30sdp"
+                        android:layout_gravity="center"
                         android:adjustViewBounds="true"
                         android:src="@drawable/repet" />
                 </LinearLayout>
@@ -144,10 +153,9 @@
 
 
             <RelativeLayout
-                android:id="@+id/ll_new_line"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:gravity="center"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@+id/ll_repeat">
@@ -160,7 +168,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/robotobold"
+                    android:fontFamily="@font/bold"
                     android:gravity="center"
                     android:text="@string/newLineOn"
                     android:textColor="@color/black"
@@ -180,37 +188,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                app:layout_constraintTop_toBottomOf="@+id/ll_new_line">
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="center"
+                android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/robotomedium"
-                    android:gravity="center_vertical"
-                    android:text="@string/note"
-                    android:textColor="#373363"
-                    android:textSize="@dimen/_10sdp"
-                    android:textStyle="bold" />
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/mid"
+                    android:gravity="center"
+                    android:text="Note:"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:fontFamily="@font/mid"
+                    android:gravity="center"
+                    android:text=" Number of Repeater Text Limit 10000"
+                    android:textColor="#A40303"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_125sdp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/etbg">
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/editbg">
 
                 <EditText
                     android:id="@+id/convertedEmojeeTxt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
                     android:background="@null"
-                    android:fontFamily="@font/robotomedium"
+                    android:fontFamily="@font/sbold"
                     android:hint="Preview of Text Repeater"
                     android:inputType="textMultiLine"
                     android:isScrollContainer="true"
@@ -219,19 +237,21 @@
                     android:padding="@dimen/_10sdp"
                     android:scrollbarStyle="insideInset"
                     android:scrollbars="vertical"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textColor="@color/black"
+                    android:textColorHint="#7F7F7F"
+                    android:textSize="12sp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp"
+                android:layout_marginTop="@dimen/_15sdp"
                 android:orientation="horizontal"
                 app:layout_constraintBottom_toBottomOf="parent">
 
                 <ImageView
                     android:id="@+id/copyTxtBtn"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
@@ -239,16 +259,15 @@
 
                 <ImageView
                     android:id="@+id/clearTxtBtn"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_3sdp"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"
                     android:src="@drawable/btn_clear" />
 
                 <ImageView
                     android:id="@+id/shareTxtBtn"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:adjustViewBounds="true"

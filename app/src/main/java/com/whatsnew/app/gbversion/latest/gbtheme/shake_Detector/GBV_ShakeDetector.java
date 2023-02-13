@@ -32,12 +32,6 @@ public class GBV_ShakeDetector {
         return this;
     }
 
-    public void destroy(Context context) {
-        if (this.shakeBroadCastReceiver != null) {
-            context.unregisterReceiver(this.shakeBroadCastReceiver);
-        }
-    }
-
     public void stopShakeDetector(Context context) {
         Log.d("--shake_service--", "stopService called");
         if (GBV_ShakeServiceNew.isServiceRunning) {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimary">
@@ -9,18 +8,22 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/header"
         android:orientation="horizontal">
 
         <ImageView
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:id="@+id/back"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:padding="@dimen/_10sdp"
-            android:visibility="invisible"
-            android:tint="@color/colorAccent"
-            android:src="@drawable/back" />
+            android:layout_marginStart="@dimen/_5sdp"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,21 +34,31 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/sbold"
                 android:gravity="center"
-                android:text="GB Latest Version"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/_17sdp"
-                android:fontFamily="@font/robotobold" />
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:text="@string/app_name"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/setting"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <ImageView
@@ -54,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/top"
         android:layout_marginTop="@dimen/_30sdp"
-        android:src="@drawable/vec4" />
+        android:src="@drawable/imgo2" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -72,52 +85,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:fontFamily="@font/robotobold"
+                android:fontFamily="@font/sbold"
                 android:gravity="center"
                 android:text="Are You Sure You Want To Exit...!! "
                 android:textColor="@color/colorAccent"
-                android:textSize="@dimen/_17sdp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:fontFamily="@font/robotoregular"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:fontFamily="@font/mid"
                 android:gravity="center"
                 android:text="Last chance to back out ?"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/_15sdp" />
+                android:textColor="#252525"
+                android:textSize="18sp" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:weightSum="2"
-                android:layout_marginTop="@dimen/_75sdp"
-                android:orientation="horizontal">
+                android:layout_marginTop="@dimen/_30sdp"
+                android:orientation="horizontal"
+                android:weightSum="2">
 
                 <ImageView
                     android:id="@+id/yes"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ll"
-                    android:layout_gravity="center"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_weight="1"
-                    android:layout_marginHorizontal="@dimen/_30sdp"
+                    android:layout_alignParentStart="true"
                     android:adjustViewBounds="true"
                     android:src="@drawable/yes" />
 
                 <ImageView
                     android:id="@+id/no"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/ll"
+                    android:layout_width="@dimen/_90sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="@dimen/_40sdp"
                     android:layout_weight="1"
-                    android:layout_gravity="center"
-                    android:layout_marginHorizontal="@dimen/_30sdp"
                     android:adjustViewBounds="true"
                     android:src="@drawable/no" />
-            </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 

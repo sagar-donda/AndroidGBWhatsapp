@@ -13,9 +13,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
-import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
+import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
 public class GBV_ChattingActivity extends AppCompatActivity {
     EditText message;
@@ -36,6 +35,11 @@ public class GBV_ChattingActivity extends AppCompatActivity {
         this.SendMessage = findViewById(R.id.go);
         this.SendMessage.setOnClickListener(new GBV_ChattingActivity.btnSendMessageListner());
         this.preference = PreferenceManager.getDefaultSharedPreferences(this);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private class btnSendMessageListner implements View.OnClickListener {
@@ -64,11 +68,7 @@ public class GBV_ChattingActivity extends AppCompatActivity {
                 }
             } else {
                 Toast.makeText(GBV_ChattingActivity.this, "Please install whatsapp to use this feature.", Toast.LENGTH_SHORT).show();
-            }        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+            }
+        }
     }
 }

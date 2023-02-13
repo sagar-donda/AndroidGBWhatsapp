@@ -8,6 +8,7 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -17,15 +18,23 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
-import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_DebouncedOnClickListener;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.blankmes.GBV_BlankMesActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.chating.GBV_ChattingActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.cleaner.GBV_WACleanMainActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.directChat.GBV_ChatDirect;
+import com.whatsnew.app.gbversion.latest.gbtheme.emojiText.GBV_Texttoemoji;
+import com.whatsnew.app.gbversion.latest.gbtheme.infowp.activity.GBV_InstallWPActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.reply.GBV_ReplyActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_StatusMainActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.searchprofile.GBV_SearchProfileActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.shakeShortcut.GBV_ShakeMain;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_ShakeCallback;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_ShakeDetector;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_ShakeOptions;
+import com.whatsnew.app.gbversion.latest.gbtheme.textRepeater.GBV_MainTextRepeater;
 import com.whatsnew.app.gbversion.latest.gbtheme.walkChat.GBV_WalkMainActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.whatsWebScan.GBV_WebActivity;
 
@@ -38,8 +47,6 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
     private static final String MANAGE_EXTERNAL_STORAGE_PERMISSION = "android:manage_external_storage";
-
-    private final Handler handler = new Handler();
 
     ImageView whatsWeb;
     ImageView linearWPCleaner;
@@ -54,58 +61,120 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View v) {
                 onBackPressed();
             }
+        }); findViewById(R.id.set).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_SettingActivity.class));
+            }
         });
         whatsWeb = findViewById(R.id.whtsWeb);
         linearWPWalk = findViewById(R.id.walkchat);
         linearWPCleaner = findViewById(R.id.cleaner);
         linearWpAppStatusSaver = findViewById(R.id.StatusSaver);
-        findViewById(R.id.next).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.reply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_FirstMAinActivity.class));
+                startActivity(new Intent(GBV_MainActivity.this, GBV_ReplyActivity.class));
             }
         });
-
-        GBV_DebouncedOnClickListener GBVDebouncedOnClickListener = new GBV_DebouncedOnClickListener(1500) {
+        findViewById(R.id.chat).setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onDebouncedClick(View v) {
-                switch (v.getId()) {
-                    case R.id.whtsWeb:
-                        startActivity(new Intent(GBV_MainActivity.this, GBV_WebActivity.class));
-                        break;
-                    case R.id.StatusSaver:
-//                        if (!arePermissionDenied()) {
-                            next();
-//                            return;
-//                        }
-//
-//                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
-//
-//                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-//                                Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-//
-//                                startActivityForResult(intent, REQUEST_PERMISSIONS);
-//                                return;
-//                            }
-//
-//                            requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
-//                        }
-                        break;
-                    case R.id.walkchat:
-                        startActivity(new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
-                        break;
-                    case R.id.chat:
-                        startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
-                        break;
-                    default:
-                        break;
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+            }
+        });
+        findViewById(R.id.blankm).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
+            }
+        });
+        findViewById(R.id.searchp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
+            }
+        });
+        findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_InstallWPActivity.class));
+            }
+        });
+        findViewById(R.id.directChat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
+            }
+        });
+        findViewById(R.id.shortcut).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+            }
+        });
+        findViewById(R.id.whtsWeb).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_WebActivity.class));
+            }
+        });
+        findViewById(R.id.walkchat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
+            }
+        });
+        findViewById(R.id.chat).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+            }
+        });
+        findViewById(R.id.shortcut).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+            }
+        });
+        findViewById(R.id.cleaner).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
+            }
+        });
+        findViewById(R.id.RepeatText).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
+            }
+        });
+        findViewById(R.id.Textemoji).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
+            }
+        });
+        findViewById(R.id.StatusSaver).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!arePermissionDenied()) {
+                    next();
+                    return;
+                }
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
+
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                        Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+
+                        startActivityForResult(intent, REQUEST_PERMISSIONS);
+                        return;
+                    }
+
+                    requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
                 }
             }
-        };
-
-        whatsWeb.setOnClickListener(GBVDebouncedOnClickListener);
-        linearWPWalk.setOnClickListener(GBVDebouncedOnClickListener);
-        linearWpAppStatusSaver.setOnClickListener(GBVDebouncedOnClickListener);
+        });
     }
 
     @Override
@@ -116,16 +185,6 @@ public class GBV_MainActivity extends GBV_BaseActivity {
 
             new GBV_ShakeDetector(new GBV_ShakeOptions().background(Boolean.TRUE).interval(1000)
                     .shakeCount(2).sensibility(2.0f)).start(this, new GBVShakeDetectListner());
-        }
-    }
-
-    private class GBVShakeDetectListner implements GBV_ShakeCallback {
-        public void onShake() {
-            if (GBV_Utils.appInstalledOrNot(GBV_MainActivity.this, "com.whatsapp")) {
-                startActivity(getPackageManager().getLaunchIntentForPackage("com.whatsapp"));
-            } else {
-                Toast.makeText(GBV_MainActivity.this, "Please install whatsapp to use this feature.", Toast.LENGTH_SHORT).show();
-            }
         }
     }
 
@@ -155,12 +214,7 @@ public class GBV_MainActivity extends GBV_BaseActivity {
     }
 
     private void next() {
-
-        handler.postDelayed(() -> {
-            startActivity(new Intent(GBV_MainActivity.this, GBV_StatusMainActivity.class));
-            finish();
-        }, 1000);
-
+        startActivity(new Intent(GBV_MainActivity.this, GBV_StatusMainActivity.class));
     }
 
     private boolean arePermissionDenied() {
@@ -179,6 +233,16 @@ public class GBV_MainActivity extends GBV_BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        startActivity(new Intent(GBV_MainActivity.this, GBV_ExitActivity.class));
+    }
+
+    private class GBVShakeDetectListner implements GBV_ShakeCallback {
+        public void onShake() {
+            if (GBV_Utils.appInstalledOrNot(GBV_MainActivity.this, "com.whatsapp")) {
+                startActivity(getPackageManager().getLaunchIntentForPackage("com.whatsapp"));
+            } else {
+                Toast.makeText(GBV_MainActivity.this, "Please install whatsapp to use this feature.", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ public class GBV_SecondActivity extends AppCompatActivity {
         findViewById(R.id.skip).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GBV_SecondActivity.this, GBV_DashBoardActivity.class));
+                startActivity(new Intent(GBV_SecondActivity.this, GBV_MainActivity.class));
             }
         });
     }

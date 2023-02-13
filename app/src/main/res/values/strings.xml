@@ -1,71 +1,38 @@
 <resources>
 
-    <!-- App Name -->
-    <string name="app_name">GB Whats Tool</string>
+    <string name="app_name">GB Version Plus</string>
 
-
-    <!-- Other Text -->
     <string name="walk">Walk &amp; Chat</string>
     <string name="message_number_empty">Please enter number</string>
     <string name="message_number_error">Number not registered correctly</string>
     <string name="accessibility">We need access to this service to perform certain features in WhatsPunch App, please go ahead and enable the switch above to enjoy all the features properly.</string>
-    <string name="clearCatch">\t\t\t\tThis Cleaner does not clear cache or something absurd to boost your WhatsApp, it goes deep inside and delete junk to make your WhatsApp smooth.\n\nNOTE: This process will delete all the Sent folders from your WhatsApp media but you are not going to lose any data during this process.</string>
-    <string name="enterName">Enter Caller Name</string>
-    <string name="delete">DELETE</string>
-    <string name="save">SAVE</string>
-    <string name="readMessage">Read Message</string>
-    <string name="receive">Receive</string>
-    <string name="send">Send</string>
-    <string name="deliveryStatus">Delivery Status</string>
-    <string name="myFriend">My Friend</string>
-    <string name="my">Me</string>
-    <string name="author">Author</string>
-    <string name="details">Details</string>
-    <string name="message">Message</string>
-    <string name="profile">Profile</string>
-    <string name="enterYourName">Enter your name</string>
-    <string name="enterYourStatus">Enter your GBVStatus</string>
-    <string name="defaults">DEFAULT</string>
-    <string name="today">TODAY</string>
-    <string name="userName">USER NAME</string>
-    <string name="typeMessage">Type a message </string>
     <string name="chatText">Chat Text</string>
     <string name="emoji">Emoji</string>
     <string name="repeatText">Repeat Text</string>
     <string name="noOfRepeatText">Number of Repeat Text</string>
     <string name="repeat">Repeat</string>
     <string name="newLineOn">New Line On</string>
-    <string name="note">Note: Number of Repeater Text Limit 10000</string>
     <string name="cleanSuccess">Clean Successfully</string>
     <string name="walkNChatInstruction">This feature will set the background layer of the camera in realtime with lesser opacity. Using this app you can see what is going on behind you while chatting with friends.</string>
     <string name="shakeToOpenWhatsapp">Shake to Open WhatsApp</string>
     <string name="shakeToOpenWhatsappEnable">Enable this feature to access WhatsApp by shaking your Phone anywhere, anytime!</string>
     <string name="shakeInfo">This is just a simple feature allows you to access WhatsApp with a quick shortcut. Just shake your Phone to perform this shortcut. Please note it takes 3–4 second to work if you are using at the Home Screen!</string>
     <string name="directChatInfo">This Application uses WhatsApp services to start a conversation with any number included.</string>
-    <string name="directChatInfoNote">Note: it Does not store the number</string>
-    <string name="enterMessage">Drop Your Message </string>
+    <string name="directChatInfoNote"> it Does not store the number</string>
     <string name="enterNumber">Enter Number</string>
-    <string name="voiceCall">VOICE CALL</string>
-    <string name="donaldTrump">Donald Trump</string>
-    <string name="callTime">00 : 30</string>
     <string name="app_installed">Installed Version</string>
     <string name="app_latest">Latest Version</string>
     <string name="app_latest_version_url">https://whatsapp-messenger.en.uptodown.com/android</string>
     <string name="app_not_installed">Not installed</string>
     <string name="app_package_name">com.whatsapp</string>
     <string name="app_playstore_url">https://play.google.com/store/apps/details?id=com.whatsapp</string>
-
     <string name="images">Images</string>
     <string name="videos">Videos</string>
-
-    <!-- Preference Titles -->
-
-    <!-- Messages Preferences -->
-
-    <!-- Sync Preferences -->
-
     <string name="saved_files">Saved Files</string>
     <string name="no_files_found">No Files Found</string>
     <string name="cant_find_whatsapp_dir">Cant find WhatsApp Dir</string>
+
+    <string name="exit_app_message">Want to exit?</string>
+    <string name="confirm_dismiss_message">No</string>
 
 </resources>

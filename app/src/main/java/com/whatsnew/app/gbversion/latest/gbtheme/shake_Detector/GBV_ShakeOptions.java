@@ -38,10 +38,6 @@ public class GBV_ShakeOptions {
         return this.shakeCounts;
     }
 
-    public void setShakeCounts(int shakeCounts) {
-        this.shakeCounts = shakeCounts;
-    }
-
     public int getInterval() {
         return this.interval;
     }

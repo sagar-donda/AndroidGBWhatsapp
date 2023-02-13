@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.StrictMode;
+
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
@@ -23,22 +24,20 @@ import java.net.URL;
 
 public class GBV_NotifyAppVersion extends AsyncTask<Void, Void, String> {
     public static String latestVersion;
-    private GBV_AppPreferences appPreferences = GBV_ApplicationPreferencesManager.getAppPreferences();
+    String title;
     private Context context;
     private Intent intent;
-    String title;
 
-  
-    public String doInBackground(Void... voidArr) {
-        return null;
-    }
 
     public GBV_NotifyAppVersion(Context context, Intent intent) {
         this.context = context;
         this.intent = intent;
     }
 
-  
+    public String doInBackground(Void... voidArr) {
+        return null;
+    }
+
     public void onPostExecute(String str) {
         String str2;
         super.onPostExecute((String) str);
@@ -69,20 +68,20 @@ public class GBV_NotifyAppVersion extends AsyncTask<Void, Void, String> {
         }
     }
 
-    
+
     public static class LatestAppVersion extends AsyncTask<Void, Void, String> {
         private String latestVersionSourceURL;
 
-      
-        public String doInBackground(Void... voidArr) {
-            return null;
-        }
 
         public LatestAppVersion(String str) {
             this.latestVersionSourceURL = str;
         }
 
-        @Override 
+        public String doInBackground(Void... voidArr) {
+            return null;
+        }
+
+        @Override
         protected void onPreExecute() {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().build());
             super.onPreExecute();
@@ -108,7 +107,7 @@ public class GBV_NotifyAppVersion extends AsyncTask<Void, Void, String> {
             GBV_NotifyAppVersion.latestVersion = str;
         }
 
-      
+
         public void onPostExecute(String str) {
             super.onPostExecute((String) str);
         }

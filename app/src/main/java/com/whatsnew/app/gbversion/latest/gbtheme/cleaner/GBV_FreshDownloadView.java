@@ -85,157 +85,6 @@ public class GBV_FreshDownloadView extends View {
     private Rect textBounds;
 
 
-    private class downloadAnimListner implements AnimatorUpdateListener {
-        public void onAnimationUpdate(ValueAnimator animation) {
-            mArrowStart = startingArrow + ((0.52f * getRadius()) * ((Float) animation.getAnimatedValue()).floatValue());
-            updateArrow();
-            invalidate();
-        }
-    }
-
-    private class addUpdateListner implements AnimatorUpdateListener {
-        public void onAnimationUpdate(ValueAnimator animation) {
-            float value = (Float) animation.getAnimatedValue();
-            mArrow_left_effect = new DashPathEffect(new float[]{mArrow_left_length, mArrow_left_length}, mArrow_left_length * value);
-            mArrow_right_effect = new DashPathEffect(new float[]{mArrow_right_length, mArrow_right_length}, mArrow_right_length * value);
-            float reduceDis = (1.0f - value) * (startingArrow - mRealTop);
-            path1.reset();
-            path1.moveTo(mRealLeft + radius, mRealTop + reduceDis);
-            path1.lineTo(mRealLeft + radius, (mRealTop + reduceDis) + mArrow_center_length);
-            mArrow_center_effect = new DashPathEffect(new float[]{mArrow_center_length, mArrow_center_length}, mArrow_center_length * value);
-            invalidate();
-        }
-    }
-
-    private class upAnimAddListner extends AnimatorListenerAdapter {
-        public void onAnimationEnd(Animator animation) {
-            mArrow_center_effect = null;
-            mArrow_right_effect = null;
-            mArrow_left_effect = null;
-            updateArrow();
-        }
-
-        public void onAnimationStart(Animator animation) {
-        }
-    }
-
-
-    private class setAnilAddListner extends AnimatorListenerAdapter {
-        public void onAnimationEnd(Animator animation) {
-            status = STATUS.DOWNLOADING;
-            invalidate();
-        }
-    }
-
-    private class animSetsAddListner extends AnimatorListenerAdapter {
-        public void onAnimationCancel(Animator animation) {
-            mPrepareAniRun = false;
-        }
-
-        public void onAnimationStart(Animator animation) {
-            mPrepareAniRun = true;
-        }
-
-        public void onAnimationEnd(Animator animation) {
-            mPrepareAniRun = false;
-        }
-    }
-
-    private class roundAnimListner implements AnimatorUpdateListener {
-        public void onAnimationUpdate(ValueAnimator animation) {
-            mMarkArcAngle = (Float) animation.getAnimatedValue();
-            invalidate();
-        }
-    }
-
-    private class roundAnimList extends AnimatorListenerAdapter {
-        public void onAnimationStart(Animator animation) {
-            status_mark = STATUS_MARK.DRAW_ARC;
-        }
-
-        public void onAnimationEnd(Animator animation) {
-            status_mark = STATUS_MARK.DRAW_MARK;
-        }
-    }
-
-    private class firstAnimListner implements AnimatorUpdateListener {
-        public void onAnimationUpdate(ValueAnimator animation) {
-            mMarkOkdegree = (Float) animation.getAnimatedValue();
-            invalidate();
-        }
-    }
-
-    private class secondAnimListner implements AnimatorUpdateListener {
-        public void onAnimationUpdate(ValueAnimator animation) {
-            mMarkOkstart = (Float) animation.getAnimatedValue();
-            invalidate();
-        }
-    }
-
-    static class FreshDownloadStatus extends AbsSavedState {
-        public static final Creator<FreshDownloadStatus> CREATOR = new creatorDownloadStatListner();
-        public int circular_color;
-        public int circular_progress_color;
-        public float circular_width;
-        public float mProgressTextSize;
-        public float progress;
-        public float radius;
-        public STATUS status;
-
-        static class creatorDownloadStatListner implements Creator<FreshDownloadStatus> {
-
-            public FreshDownloadStatus createFromParcel(Parcel source) {
-                return new FreshDownloadStatus(source);
-            }
-
-            public FreshDownloadStatus[] newArray(int size) {
-                return new FreshDownloadStatus[size];
-            }
-        }
-
-        public int describeContents() {
-            return 0;
-        }
-
-        public void writeToParcel(Parcel dest, int flags) {
-            dest.writeInt(this.status == null ? -1 : this.status.ordinal());
-            dest.writeFloat(this.progress);
-            dest.writeFloat(this.radius);
-            dest.writeInt(this.circular_color);
-            dest.writeInt(this.circular_progress_color);
-            dest.writeFloat(this.circular_width);
-            dest.writeFloat(this.mProgressTextSize);
-        }
-
-        public FreshDownloadStatus(Parcelable superState) {
-            super(superState);
-        }
-
-        protected FreshDownloadStatus(Parcel in) {
-            super(in);
-            int tmpStatus = in.readInt();
-            this.status = tmpStatus == -1 ? null : STATUS.values()[tmpStatus];
-            this.progress = in.readFloat();
-            this.radius = in.readFloat();
-            this.circular_color = in.readInt();
-            this.circular_progress_color = in.readInt();
-            this.circular_width = in.readFloat();
-            this.mProgressTextSize = in.readFloat();
-        }
-    }
-
-    public enum STATUS {
-        PREPARE,
-        DOWNLOADING,
-        DOWNLOADED,
-        ERROR
-    }
-
-    private enum STATUS_MARK {
-        DRAW_ARC,
-        DRAW_MARK
-    }
-
     public GBV_FreshDownloadView(Context context) {
         this(context, null);
     }
@@ -700,5 +549,155 @@ public class GBV_FreshDownloadView extends View {
             return;
         }
         super.onRestoreInstanceState(state);
+    }
+
+    public enum STATUS {
+        PREPARE,
+        DOWNLOADING,
+        DOWNLOADED,
+        ERROR
+    }
+
+    private enum STATUS_MARK {
+        DRAW_ARC,
+        DRAW_MARK
+    }
+
+    static class FreshDownloadStatus extends AbsSavedState {
+        public static final Creator<FreshDownloadStatus> CREATOR = new creatorDownloadStatListner();
+        public int circular_color;
+        public int circular_progress_color;
+        public float circular_width;
+        public float mProgressTextSize;
+        public float progress;
+        public float radius;
+        public STATUS status;
+
+        public FreshDownloadStatus(Parcelable superState) {
+            super(superState);
+        }
+
+        protected FreshDownloadStatus(Parcel in) {
+            super(in);
+            int tmpStatus = in.readInt();
+            this.status = tmpStatus == -1 ? null : STATUS.values()[tmpStatus];
+            this.progress = in.readFloat();
+            this.radius = in.readFloat();
+            this.circular_color = in.readInt();
+            this.circular_progress_color = in.readInt();
+            this.circular_width = in.readFloat();
+            this.mProgressTextSize = in.readFloat();
+        }
+
+        public int describeContents() {
+            return 0;
+        }
+
+        public void writeToParcel(Parcel dest, int flags) {
+            dest.writeInt(this.status == null ? -1 : this.status.ordinal());
+            dest.writeFloat(this.progress);
+            dest.writeFloat(this.radius);
+            dest.writeInt(this.circular_color);
+            dest.writeInt(this.circular_progress_color);
+            dest.writeFloat(this.circular_width);
+            dest.writeFloat(this.mProgressTextSize);
+        }
+
+        static class creatorDownloadStatListner implements Creator<FreshDownloadStatus> {
+
+            public FreshDownloadStatus createFromParcel(Parcel source) {
+                return new FreshDownloadStatus(source);
+            }
+
+            public FreshDownloadStatus[] newArray(int size) {
+                return new FreshDownloadStatus[size];
+            }
+        }
+    }
+
+    private class downloadAnimListner implements AnimatorUpdateListener {
+        public void onAnimationUpdate(ValueAnimator animation) {
+            mArrowStart = startingArrow + ((0.52f * getRadius()) * ((Float) animation.getAnimatedValue()).floatValue());
+            updateArrow();
+            invalidate();
+        }
+    }
+
+    private class addUpdateListner implements AnimatorUpdateListener {
+        public void onAnimationUpdate(ValueAnimator animation) {
+            float value = (Float) animation.getAnimatedValue();
+            mArrow_left_effect = new DashPathEffect(new float[]{mArrow_left_length, mArrow_left_length}, mArrow_left_length * value);
+            mArrow_right_effect = new DashPathEffect(new float[]{mArrow_right_length, mArrow_right_length}, mArrow_right_length * value);
+            float reduceDis = (1.0f - value) * (startingArrow - mRealTop);
+            path1.reset();
+            path1.moveTo(mRealLeft + radius, mRealTop + reduceDis);
+            path1.lineTo(mRealLeft + radius, (mRealTop + reduceDis) + mArrow_center_length);
+            mArrow_center_effect = new DashPathEffect(new float[]{mArrow_center_length, mArrow_center_length}, mArrow_center_length * value);
+            invalidate();
+        }
+    }
+
+    private class upAnimAddListner extends AnimatorListenerAdapter {
+        public void onAnimationEnd(Animator animation) {
+            mArrow_center_effect = null;
+            mArrow_right_effect = null;
+            mArrow_left_effect = null;
+            updateArrow();
+        }
+
+        public void onAnimationStart(Animator animation) {
+        }
+    }
+
+    private class setAnilAddListner extends AnimatorListenerAdapter {
+        public void onAnimationEnd(Animator animation) {
+            status = STATUS.DOWNLOADING;
+            invalidate();
+        }
+    }
+
+    private class animSetsAddListner extends AnimatorListenerAdapter {
+        public void onAnimationCancel(Animator animation) {
+            mPrepareAniRun = false;
+        }
+
+        public void onAnimationStart(Animator animation) {
+            mPrepareAniRun = true;
+        }
+
+        public void onAnimationEnd(Animator animation) {
+            mPrepareAniRun = false;
+        }
+    }
+
+    private class roundAnimListner implements AnimatorUpdateListener {
+        public void onAnimationUpdate(ValueAnimator animation) {
+            mMarkArcAngle = (Float) animation.getAnimatedValue();
+            invalidate();
+        }
+    }
+
+    private class roundAnimList extends AnimatorListenerAdapter {
+        public void onAnimationStart(Animator animation) {
+            status_mark = STATUS_MARK.DRAW_ARC;
+        }
+
+        public void onAnimationEnd(Animator animation) {
+            status_mark = STATUS_MARK.DRAW_MARK;
+        }
+    }
+
+    private class firstAnimListner implements AnimatorUpdateListener {
+        public void onAnimationUpdate(ValueAnimator animation) {
+            mMarkOkdegree = (Float) animation.getAnimatedValue();
+            invalidate();
+        }
+    }
+
+    private class secondAnimListner implements AnimatorUpdateListener {
+        public void onAnimationUpdate(ValueAnimator animation) {
+            mMarkOkstart = (Float) animation.getAnimatedValue();
+            invalidate();
+        }
     }
 }

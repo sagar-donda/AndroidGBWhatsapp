@@ -19,9 +19,9 @@ import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_Base
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
 public class GBV_MyListAdapter extends RecyclerView.Adapter<GBV_MyListAdapter.ViewHolder> {
-    private GBV_MyListData[] listdata;
-    GBV_BaseActivity GBVBaseActivity;
     private final String TAG = GBV_MyListAdapter.class.getSimpleName();
+    GBV_BaseActivity GBVBaseActivity;
+    private GBV_MyListData[] listdata;
 
     public GBV_MyListAdapter(GBV_MyListData[] listdata, GBV_BaseActivity GBVBaseActivity) {
         this.listdata = listdata;

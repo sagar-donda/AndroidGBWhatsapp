@@ -26,8 +26,8 @@ import java.util.List;
 public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
 
     private final List<GBV_Status> imagesList;
-    private Context context;
     private final RelativeLayout container;
+    private Context context;
 
     public GBV_ImageAdapter(List<GBV_Status> imagesList, RelativeLayout container) {
         this.imagesList = imagesList;

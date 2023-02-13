@@ -17,22 +17,22 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter.GBV_FilesAdapter;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class GBV_SavedFilesFragment extends Fragment {
 
-    private RecyclerView recyclerView;
-    private ProgressBar progressBar;
     private final List<GBV_Status> savedFilesList = new ArrayList<>();
     private final Handler handler = new Handler();
+    private RecyclerView recyclerView;
+    private ProgressBar progressBar;
     private GBV_FilesAdapter GBVFilesAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView no_files_found;

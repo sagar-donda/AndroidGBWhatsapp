@@ -18,7 +18,7 @@ public class GBV_ThirdActivity extends AppCompatActivity {
         findViewById(R.id.nxt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(GBV_ThirdActivity.this, GBV_DashBoardActivity.class));
+                startActivity(new Intent(GBV_ThirdActivity.this, GBV_MainActivity.class));
             }
         });
 

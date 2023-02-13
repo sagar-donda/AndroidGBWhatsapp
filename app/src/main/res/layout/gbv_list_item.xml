@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_50sdp"
+    android:layout_height="50sp"
     android:layout_margin="@dimen/_10sdp"
-    android:background="@drawable/bg_caption_details"
+    android:background="@drawable/editbg"
     android:orientation="horizontal">
 
     <TextView
@@ -15,15 +15,14 @@
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:layout_toLeftOf="@+id/ll_content"
-        android:fontFamily="@font/robotomedium"
-        android:gravity="center"
+        android:fontFamily="@font/sbold"
         android:includeFontPadding="false"
         android:justificationMode="inter_word"
         android:paddingHorizontal="@dimen/_5sdp"
         android:paddingTop="@dimen/_5sdp"
         android:text="@string/app_name"
-        android:textColor="@color/statusTextColor"
-        android:textSize="@dimen/_15sdp" />
+        android:textColor="#252525"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:id="@+id/ll_content"

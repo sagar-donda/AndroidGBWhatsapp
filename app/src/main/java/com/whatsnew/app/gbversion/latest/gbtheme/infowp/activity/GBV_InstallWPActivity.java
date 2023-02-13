@@ -18,9 +18,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 
-
-import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
+import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.infowp.util.GBV_AppPackageNameUtils;
 import com.whatsnew.app.gbversion.latest.gbtheme.infowp.util.GBV_NotificationReceiver;
 
@@ -30,11 +29,11 @@ public class GBV_InstallWPActivity extends AppCompatActivity {
     private ImageView goToGooglePlay;
     private TextView installedVersion;
     private boolean isBackButtonPressed = false;
-    private TextView latestVersion,instal;
+    private TextView latestVersion, instal;
     private ProgressBar progressWheel;
     private RelativeLayout swipeRefreshLayout;
 
-    @Override 
+    @Override
     public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.gbv_activity_info_wpactivity);
@@ -51,7 +50,7 @@ public class GBV_InstallWPActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= 26) {
             notificationManager.createNotificationChannel(new NotificationChannel("UpdateLatestVersionNotification", "NotificationChannel", 3));
         }
-        PendingIntent broadcast = PendingIntent.getBroadcast(this, 0, intent,  PendingIntent.FLAG_MUTABLE);
+        PendingIntent broadcast = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_MUTABLE);
 
         AlarmManager alarmManager = (AlarmManager) getSystemService(NotificationCompat.CATEGORY_ALARM);
         Calendar instance = Calendar.getInstance();
@@ -66,8 +65,8 @@ public class GBV_InstallWPActivity extends AppCompatActivity {
         this.goToGooglePlay = (ImageView) findViewById(R.id.go_to_google_play);
         this.instal = (TextView) findViewById(R.id.instal);
 
-        this.goToGooglePlay.setOnClickListener(new View.OnClickListener() { 
-            @Override 
+        this.goToGooglePlay.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 GBV_InstallWPActivity installWPActivity = GBV_InstallWPActivity.this;
                 GBV_AppPackageNameUtils.goToPlaystore(installWPActivity, installWPActivity.getString(R.string.app_playstore_url));
@@ -88,7 +87,8 @@ public class GBV_InstallWPActivity extends AppCompatActivity {
             installedVersion.setText(GBV_AppPackageNameUtils.getInstalledAppVersion(GBV_InstallWPActivity.this, getString(R.string.app_package_name)));
         } else {
             installedVersion.setText(R.string.app_not_installed);
-        }    }
+        }
+    }
 
     @Override
     public void onBackPressed() {

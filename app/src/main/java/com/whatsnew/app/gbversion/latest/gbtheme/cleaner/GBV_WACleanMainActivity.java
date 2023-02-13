@@ -17,8 +17,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
-import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_DebouncedOnClickListener;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
@@ -27,11 +25,10 @@ import java.lang.reflect.Method;
 
 public class GBV_WACleanMainActivity extends GBV_BaseActivity {
     LinearLayout FooterMain;
-    ImageView Help;
     ImageView btnStart;
+    ObjectAnimator objAnimator;
     private Handler cleanerHandler = new cleanHandlerMethod();
     private GBV_FreshDownloadView freshDownloads;
-    ObjectAnimator objAnimator;
     private TextView textDownloader;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,11 +48,32 @@ public class GBV_WACleanMainActivity extends GBV_BaseActivity {
         btnStart.setOnClickListener(new btnStartListner(this));
     }
 
-    private class btnHelpListner implements OnClickListener {
-        public void onClick(View v) {
-            ShowHelp();
-        }
+    private void ShowHelp() {
+        final Dialog dialog = new Dialog(this);
+        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        dialog.requestWindowFeature(1);
+        View inflate = layoutInflater.inflate(R.layout.gbv_whatsapp_cleaner_info_dialog, null);
+        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        ImageView imageView = inflate.findViewById(R.id.btncancel);
+        dialog.setContentView(inflate);
+        dialog.show();
+        imageView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.dismiss();
+            }
+        });
     }
+
+    public void getImageDetails() {
+        new getUserImage().execute();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
 
     @SuppressLint("HandlerLeak")
     private class cleanHandlerMethod extends Handler {
@@ -174,32 +192,5 @@ public class GBV_WACleanMainActivity extends GBV_BaseActivity {
 
         public void onPostExecute(Void voids) {
         }
-    }
-
-    private void ShowHelp() {
-        final Dialog dialog = new Dialog(this);
-        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        dialog.requestWindowFeature(1);
-        View inflate = layoutInflater.inflate(R.layout.gbv_whatsapp_cleaner_info_dialog, null);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-        ImageView imageView = inflate.findViewById(R.id.btncancel);
-        dialog.setContentView(inflate);
-        dialog.show();
-
-        imageView.setOnClickListener(new GBV_DebouncedOnClickListener(500) {
-            @Override
-            public void onDebouncedClick(View v) {
-                dialog.dismiss();
-            }
-        });
-    }
-
-    public void getImageDetails() {
-        new getUserImage().execute();
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }

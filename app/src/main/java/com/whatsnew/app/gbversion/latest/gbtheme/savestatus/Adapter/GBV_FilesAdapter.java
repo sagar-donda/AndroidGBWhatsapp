@@ -49,7 +49,7 @@ public class GBV_FilesAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull final GBV_ItemViewHolder holder, int position) {
 
-        holder.save.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_baseline_delete_24));
+        holder.save.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.dels));
         holder.share.setVisibility(View.VISIBLE);
         holder.save.setVisibility(View.VISIBLE);
 

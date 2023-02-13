@@ -13,10 +13,6 @@ class GBV_appPreferences {
     }
 
 
-    public String getString(String key, String defValue) throws ClassCastException {
-        return this.sharedPreferences.getString(key, defValue);
-    }
-
     void putInt(String key, Integer value) {
         try {
             Editor prefEdit = this.sharedPreferences.edit();

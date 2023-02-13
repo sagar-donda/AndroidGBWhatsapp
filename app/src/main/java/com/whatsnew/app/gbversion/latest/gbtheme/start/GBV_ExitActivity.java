@@ -26,7 +26,7 @@ public class GBV_ExitActivity extends AppCompatActivity {
         findViewById(R.id.no).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_ExitActivity.this, GBV_DashBoardActivity.class));
+                startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
             }
         });
     }

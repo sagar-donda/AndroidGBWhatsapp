@@ -13,7 +13,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
@@ -68,6 +67,10 @@ public class GBV_Texttoemoji extends GBV_BaseActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
 
     private class btnConvertListner implements OnClickListener {
         public void onClick(View view) {
@@ -164,11 +167,7 @@ public class GBV_Texttoemoji extends GBV_BaseActivity {
                 startActivity(Intent.createChooser(shareIntent, "Select an app to share"));
             } else {
                 Toast.makeText(GBV_Texttoemoji.this, "Please install whatsapp to use this feature.", Toast.LENGTH_SHORT).show();
-            }        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
+            }
+        }
     }
 }

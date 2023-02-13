@@ -30,6 +30,7 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -43,12 +44,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity"
+            android:name=".start.GBV_SettingActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_GallaryActivity"
+            android:name=".start.GBV_ExitActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -58,27 +59,17 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_SecondMainActivity"
+            android:name=".start.GBV_ThirdActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_FirstMAinActivity"
+            android:name=".start.GBV_SecondActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ThirdActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_SecondActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_FirstActivity"
+            android:name=".start.GBV_FirstActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -107,7 +98,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_SplashActivity"
+            android:name=".start.GBV_SplashActivity"
             android:exported="true"
             android:launchMode="singleTask"
             android:screenOrientation="portrait">
@@ -119,12 +110,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_DashBoardActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_MainActivity"
+            android:name=".start.GBV_MainActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -137,8 +123,7 @@
             android:name="com.whatsnew.app.gbversion.latest.gbtheme.walkChat.GBV_WalkMainActivity"
             android:exported="false"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.whatsnew.app.gbversion.latest.gbtheme.shakeShortcut.GBV_ShakeMain"
             android:exported="false"
@@ -148,8 +133,7 @@
             android:name="com.whatsnew.app.gbversion.latest.gbtheme.cleaner.GBV_WACleanMainActivity"
             android:exported="false"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
+            android:screenOrientation="portrait" />
         <activity
             android:name="com.whatsnew.app.gbversion.latest.gbtheme.directChat.GBV_ChatDirect"
             android:exported="false"
@@ -168,49 +152,6 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_MainFackChat"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_ChatProfile"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_GroupProfile"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_UserChat"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_Wallpaper"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_EditMessageActivity"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait"
-            android:theme="@style/MyMaterialTheme" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_EditChatUserProfile"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name="com.whatsnew.app.gbversion.latest.gbtheme.fackChat.GBV_Calls"
-            android:exported="false"
-            android:launchMode="singleTask"
-            android:screenOrientation="portrait" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -241,6 +182,7 @@
                 android:resource="@xml/service_config" />
         </service>
 
+        <receiver android:name=".shakeShortcut.GBV_ShakeReceiver" />
         <receiver
             android:name="com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_Restarter"
             android:enabled="true"
@@ -249,7 +191,6 @@
                 <action android:name="restartservice" />
             </intent-filter>
         </receiver>
-
-      </application>
+    </application>
 
 </manifest>

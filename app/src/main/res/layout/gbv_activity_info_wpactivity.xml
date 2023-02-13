@@ -11,18 +11,22 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/header"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:padding="@dimen/_7sdp"
-            android:src="@drawable/back"
-            android:tint="@color/colorAccent" />
+            android:layout_marginStart="@dimen/_5sdp"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,21 +37,31 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/sbold"
                 android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="WhatsApp Info"
-                android:textColor="@color/colorAccent"
-                  android:textSize="@dimen/_17sdp"
-               android:fontFamily="@font/robotobold" />
+                android:textColor="@color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/setting"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -65,11 +79,12 @@
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_75sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:background="@drawable/bg_caption_details"
+                android:background="@drawable/editbg"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -83,12 +98,12 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:fontFamily="@font/robotobold"
+                        android:fontFamily="@font/sbold"
                         android:gravity="center"
                         android:singleLine="true"
                         android:text="@string/app_latest"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_17sdp" />
+                        android:textColor="#252525"
+                        android:textSize="18sp" />
 
                     <TextView
                         android:id="@+id/app_installed_version"
@@ -97,34 +112,35 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/robotoregular"
+                        android:fontFamily="@font/mid"
                         android:gravity="center"
                         android:singleLine="true"
-                        android:textColor="@color/gray"
-                        android:textSize="@dimen/_15sdp" />
+                        android:textColor="#4D4D4D"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </LinearLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_75sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/bg_caption_details"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/editbg"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <TextView
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/robotobold"
+                    android:fontFamily="@font/sbold"
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="@string/app_installed"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/_17sdp" />
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/app_latest_version"
@@ -133,39 +149,40 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/robotoregular"
+                    android:fontFamily="@font/mid"
                     android:gravity="center"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textColor="#4D4D4D"
+                    android:textSize="16sp" />
 
                 <ProgressBar
                     android:id="@+id/progress_wheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:visibility="invisible" />
+                    android:visibility="gone" />
             </LinearLayout>
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_75sdp"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:background="@drawable/bg_caption_details"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:background="@drawable/editbg"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:padding="@dimen/_10sdp">
 
                 <TextView
                     style="@style/TextAppearance.AppCompat.Title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:fontFamily="@font/robotobold"
+                    android:fontFamily="@font/sbold"
                     android:gravity="center"
                     android:singleLine="true"
                     android:text="Check App Installed"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/_17sdp" />
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/instal"
@@ -174,28 +191,27 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:fontFamily="@font/robotoregular"
+                    android:fontFamily="@font/mid"
                     android:gravity="center"
                     android:singleLine="true"
-                    android:textColor="@color/gray"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textColor="#4D4D4D"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_30sdp">
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/go_to_google_play"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_75sdp"
                     android:adjustViewBounds="true"
+                    android:layout_marginHorizontal="@dimen/_75sdp"
                     android:src="@drawable/downld" />
             </LinearLayout>
-
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

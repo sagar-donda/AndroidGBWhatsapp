@@ -12,19 +12,19 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-
 import com.hbb20.CountryCodePicker;
 import com.hbb20.CountryCodePicker.OnCountryChangeListener;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
-import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
+import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
 public class GBV_ChatDirect extends GBV_BaseActivity {
     EditText message;
-    private EditText number;
     ImageView SendMessage;
     CountryCodePicker CcP;
+    private EditText number;
     private SharedPreferences preference;
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_main_chat_direct);
@@ -45,6 +45,11 @@ public class GBV_ChatDirect extends GBV_BaseActivity {
         if (getIntent().getStringExtra("number") != null) {
             this.number.setText(getIntent().getStringExtra("number"));
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 
     private class btnSendMessageListner implements OnClickListener {
@@ -88,10 +93,5 @@ public class GBV_ChatDirect extends GBV_BaseActivity {
             GBV_ChatDirect.this.CcP.setCountryPreference(GBV_ChatDirect.this.CcP.getSelectedCountryNameCode());
             GBV_ChatDirect.this.preference.edit().putString("last_locale", GBV_ChatDirect.this.CcP.getSelectedCountryCode()).apply();
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
     }
 }

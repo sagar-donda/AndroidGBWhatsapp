@@ -9,18 +9,22 @@
         android:id="@+id/top"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
-        android:background="@color/colorPrimary"
+        android:layout_alignParentTop="true"
+        android:background="@drawable/header"
         android:orientation="horizontal">
 
         <ImageView
             android:id="@+id/back"
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:padding="@dimen/_7sdp"
-            android:src="@drawable/back"
-            android:tint="@color/colorAccent" />
+            android:layout_marginStart="@dimen/_5sdp"
+            android:adjustViewBounds="true"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/ic_back"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -31,21 +35,31 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
+                android:adjustViewBounds="true"
+                android:ellipsize="marquee"
+                android:fontFamily="@font/sbold"
                 android:gravity="center"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
                 android:text="Blank Message"
-                android:textColor="@color/colorAccent"
-                android:textSize="@dimen/_17sdp"
-               android:fontFamily="@font/robotobold"/>
+                android:textColor="@color/white"
+                android:textSize="20sp" />
         </LinearLayout>
 
         <ImageView
-            android:layout_width="@dimen/_35sdp"
-            android:layout_height="@dimen/_35sdp"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
             android:layout_gravity="center"
-            android:layout_marginRight="@dimen/_10sdp" />
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:padding="@dimen/_5sdp"
+            android:src="@drawable/setting"
+            android:visibility="invisible" />
     </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -58,8 +72,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <LinearLayout
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_30sdp"
@@ -70,24 +84,26 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="@font/robotobold"
+                    android:fontFamily="@font/sbold"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_centerVertical="true"
                     android:text="Number of blank characters:"
-                    android:textColor="#000000"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textColor="#252525"
+                    android:textSize="18sp" />
 
                 <EditText
                     android:id="@+id/edt_number"
-                    android:layout_width="@dimen/_50sdp"
-                    android:layout_height="@dimen/_50sdp"
-                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_width="45dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="45dp"
                     android:layout_marginEnd="@dimen/_15sdp"
-                    android:background="@drawable/etbg"
+                    android:background="@drawable/editbg"
+                    android:fontFamily="@font/sbold"
                     android:gravity="center"
                     android:inputType="number"
                     android:text="10"
-                    android:textSize="18dp"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                    android:textSize="17sp" />
+            </RelativeLayout>
 
 
             <LinearLayout
@@ -102,33 +118,37 @@
                 <CheckBox
                     android:id="@+id/chk_applink"
                     android:layout_width="wrap_content"
-                    android:buttonTint="@color/colorAccent"
-                    android:layout_height="wrap_content" />
+                    android:layout_marginStart="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorAccent" />
 
                 <TextView
                     android:layout_width="wrap_content"
+                    android:layout_marginEnd="@dimen/_30sdp"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
                     android:text="Write app link at the end of the blank message:"
                     android:textColor="#000000"
-                    android:layout_marginStart="@dimen/_15sdp"
-                    android:textSize="@dimen/_15sdp"
-                    android:textStyle="normal" />
+                    android:textSize="14sp"
+                    android:fontFamily="@font/mid" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:layout_marginEnd="@dimen/_10sdp">
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_height="wrap_content">
 
                 <ImageView
                     android:id="@+id/btn_send"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="@dimen/_75sdp"
                     android:adjustViewBounds="true"
-                    android:src="@drawable/sens" />
+                    android:layout_marginHorizontal="@dimen/_75sdp"
+                    android:src="@drawable/send" />
             </LinearLayout>
 
 

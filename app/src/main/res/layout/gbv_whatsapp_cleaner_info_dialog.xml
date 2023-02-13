@@ -18,24 +18,50 @@
             android:layout_gravity="center"
             android:layout_marginHorizontal="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_10sdp"
+            android:fontFamily="@font/mid"
             android:justificationMode="inter_word"
             android:letterSpacing="0.05"
             android:lineSpacingExtra="2dp"
-            android:text="@string/clearCatch"
-            android:textColor="@color/colorAccent"
-            android:textSize="@dimen/_10sdp"
-            android:fontFamily="@font/robotomedium"/>
+            android:text="\t\t\t\tThis Cleaner does not clear cache or something absurd to boost your WhatsApp, it goes deep inside and delete junk to make your WhatsApp smooth."
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent" android:layout_marginHorizontal="@dimen/_20sdp"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mid"
+                android:justificationMode="inter_word"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="2dp"
+                android:text="\nNOTE:"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mid"
+                android:justificationMode="inter_word"
+                android:letterSpacing="0.05"
+                android:lineSpacingExtra="2dp"
+                android:text="\n  This process will delete all the Sent folders from your WhatsApp media but you are not going to lose any data during this process."
+                android:textColor="#A40303"
+                android:textSize="12sp" />
+        </LinearLayout>
 
         <ImageView
             android:id="@+id/btncancel"
             android:layout_width="wrap_content"
-            android:layout_height="@dimen/_35sdp"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="wrap_content"
             android:layout_gravity="right|bottom"
+            android:layout_marginTop="@dimen/_10sdp"
             android:adjustViewBounds="true"
-            android:layout_marginRight="@dimen/_15sdp"
-            android:layout_marginBottom="@dimen/_10sdp"
-            android:src="@drawable/btn_cancel" />
+            android:src="@drawable/cancle" />
     </LinearLayout>
 
 </FrameLayout>

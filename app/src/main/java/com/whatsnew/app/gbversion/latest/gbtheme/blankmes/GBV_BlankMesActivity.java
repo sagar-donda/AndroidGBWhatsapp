@@ -11,7 +11,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
 public class GBV_BlankMesActivity extends AppCompatActivity {
@@ -34,8 +33,8 @@ public class GBV_BlankMesActivity extends AppCompatActivity {
         chk_applink = findViewById(R.id.chk_applink);
         edt_number = findViewById(R.id.edt_number);
 
-        this.btn_send.setOnClickListener(new View.OnClickListener() { 
-            @Override 
+        this.btn_send.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 try {
                     int number = Integer.parseInt(GBV_BlankMesActivity.this.edt_number.getText().toString());

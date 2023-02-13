@@ -144,14 +144,14 @@ public class GBV_ShakeService extends Service {
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
         Notification notification = notificationBuilder.setOngoing(true)
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.mipmap.ic_launcher)
                 .setContentTitle(getText(R.string.app_name))
                 .setContentText("Please shake your mobile to open whatsapp.")
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setCategory(NotificationCompat.CATEGORY_MESSAGE)
                 .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
                 .setContentIntent(tabPendingIntent)
-                .addAction(R.drawable.logo, null, closePendingIntent)
+                .addAction(R.mipmap.ic_launcher, null, closePendingIntent)
                 .build();
         startForeground(2, notification);
     }

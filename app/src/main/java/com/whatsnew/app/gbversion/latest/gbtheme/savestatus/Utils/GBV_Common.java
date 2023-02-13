@@ -30,10 +30,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 public class GBV_Common {
 
-    static final int MINI_KIND = 1;
-    static final int MICRO_KIND = 3;
-
-    public static final int GRID_COUNT = 2;
+    public static final int GRID_COUNT = 3;
 
     private static final String CHANNEL_NAME = "GAUTHAM";
 

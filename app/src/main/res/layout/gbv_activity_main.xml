@@ -22,8 +22,8 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:adjustViewBounds="true"
             android:padding="@dimen/_5sdp"
-            android:visibility="invisible"
-            android:src="@drawable/ic_back" />
+            android:src="@drawable/ic_back"
+            android:visibility="invisible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -83,7 +83,7 @@
                 android:layout_below="@+id/top"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/trending" />
+                android:src="@drawable/statustxt" />
 
             <ImageView
                 android:id="@+id/StatusSaver"
@@ -91,7 +91,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_15sdp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/btn_whatsapp_status_saver" />
+                android:src="@drawable/status" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/trending" />
 
             <ImageView
                 android:id="@+id/whtsWeb"
@@ -108,6 +115,14 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:adjustViewBounds="true"
                 android:src="@drawable/btn_walk_chat" />
+
+            <FrameLayout
+                android:id="@+id/native_frame"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:visibility="visible" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -184,6 +199,14 @@
                     android:adjustViewBounds="true"
                     android:src="@drawable/btn_unsaved_number" />
 
+                <FrameLayout
+                    android:id="@+id/native_frame1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible" />
+
                 <ImageView
                     android:id="@+id/RepeatText"
                     android:layout_width="match_parent"
@@ -211,6 +234,14 @@
                     android:adjustViewBounds="true"
                     android:src="@drawable/btn_text_emoji" />
 
+                <FrameLayout
+                    android:id="@+id/native_frame2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:visibility="visible" />
+
                 <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -232,8 +263,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:adjustViewBounds="true"
                     android:layout_marginBottom="@dimen/_15sdp"
+                    android:adjustViewBounds="true"
                     android:src="@drawable/info" />
 
             </LinearLayout>

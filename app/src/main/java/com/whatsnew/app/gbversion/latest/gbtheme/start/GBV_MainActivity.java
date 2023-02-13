@@ -7,9 +7,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -18,7 +18,8 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
-import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.blankmes.GBV_BlankMesActivity;
@@ -56,12 +57,16 @@ public class GBV_MainActivity extends GBV_BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_main);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame), this);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame1), this);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame2), this);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
-        }); findViewById(R.id.set).setOnClickListener(new View.OnClickListener() {
+        });
+        findViewById(R.id.set).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(GBV_MainActivity.this, GBV_SettingActivity.class));

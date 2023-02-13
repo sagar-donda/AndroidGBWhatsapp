@@ -1,16 +1,11 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -18,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_ImageActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
 
@@ -46,7 +42,6 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final GBV_ItemViewHolder holder, int position) {
-
         final GBV_Status GBVStatus = imagesList.get(position);
         Picasso.get().load(GBVStatus.getFile()).into(holder.imageView);
 
@@ -55,31 +50,32 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
         holder.share.setOnClickListener(v -> {
 
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
-
             shareIntent.setType("image/jpg");
             shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + GBVStatus.getFile().getAbsolutePath()));
             context.startActivity(Intent.createChooser(shareIntent, "Share image"));
 
         });
-
+        String filePath = GBVStatus.getFile().getAbsolutePath();
         holder.imageView.setOnClickListener(v -> {
-
-            final AlertDialog.Builder alertD = new AlertDialog.Builder(context);
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.gbv_view_image_full_screen, null);
-            alertD.setView(view);
-
-            ImageView imageView = view.findViewById(R.id.img);
-            Picasso.get().load(GBVStatus.getFile()).into(imageView);
-
-            AlertDialog alert = alertD.create();
-            alert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-            alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            alert.show();
+            Intent intent = new Intent(context, GBV_ImageActivity.class);
+            intent.putExtra("picture", filePath);
+            context.startActivity(intent);
+//            final AlertDialog.Builder alertD = new AlertDialog.Builder(context);
+//            LayoutInflater inflater = LayoutInflater.from(context);
+//            View view = inflater.inflate(R.layout.gbv_view_image_full_screen, null);
+//            alertD.setView(view);
+//
+//            ImageView imageView = view.findViewById(R.id.img);
+//            Picasso.get().load(GBVStatus.getFile()).into(imageView);
+//
+//            AlertDialog alert = alertD.create();
+//            alert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+//            alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//            alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//            alert.show();
 
         });
-
+        notifyDataSetChanged();
     }
 
     @Override

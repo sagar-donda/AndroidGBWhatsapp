@@ -34,5 +34,6 @@
 
     <string name="exit_app_message">Want to exit?</string>
     <string name="confirm_dismiss_message">No</string>
+    <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
 
 </resources>

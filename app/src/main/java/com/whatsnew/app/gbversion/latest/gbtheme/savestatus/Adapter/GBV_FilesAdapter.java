@@ -23,6 +23,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_ImageActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_VideoActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
 
 import java.util.List;
@@ -89,64 +91,72 @@ public class GBV_FilesAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
         holder.imageView.setOnClickListener(v -> {
 
             if (GBVStatus.isVideo()) {
+                String filePath = GBVStatus.getFile().getAbsolutePath();
+                Intent intent = new Intent(context, GBV_VideoActivity.class);
+                intent.putExtra("video", filePath);
+                context.startActivity(intent);
 
-                final AlertDialog.Builder alertDg = new AlertDialog.Builder(context);
-
-                FrameLayout mediaControls = view1.findViewById(R.id.videoViewWrapper);
-
-                if (view1.getParent() != null) {
-                    ((ViewGroup) view1.getParent()).removeView(view1);
-                }
-
-                alertDg.setView(view1);
-
-                final VideoView videoView = view1.findViewById(R.id.video_full);
-
-                final MediaController mediaController = new MediaController(context, false);
-
-                videoView.setOnPreparedListener(mp -> {
-
-                    mp.start();
-                    mediaController.show(0);
-                    mp.setLooping(true);
-                });
-
-                videoView.setMediaController(mediaController);
-                mediaController.setMediaPlayer(videoView);
-                videoView.setVideoURI(Uri.fromFile(GBVStatus.getFile()));
-                videoView.requestFocus();
-
-                ((ViewGroup) mediaController.getParent()).removeView(mediaController);
-
-                if (mediaControls.getParent() != null) {
-                    mediaControls.removeView(mediaController);
-                }
-
-                mediaControls.addView(mediaController);
-
-                final AlertDialog alert2 = alertDg.create();
-
-                alert2.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-                alert2.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                alert2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-
-                alert2.show();
+//                final AlertDialog.Builder alertDg = new AlertDialog.Builder(context);
+//
+//                FrameLayout mediaControls = view1.findViewById(R.id.videoViewWrapper);
+//
+//                if (view1.getParent() != null) {
+//                    ((ViewGroup) view1.getParent()).removeView(view1);
+//                }
+//
+//                alertDg.setView(view1);
+//
+//                final VideoView videoView = view1.findViewById(R.id.video_full);
+//
+//                final MediaController mediaController = new MediaController(context, false);
+//
+//                videoView.setOnPreparedListener(mp -> {
+//
+//                    mp.start();
+//                    mediaController.show(0);
+//                    mp.setLooping(true);
+//                });
+//
+//                videoView.setMediaController(mediaController);
+//                mediaController.setMediaPlayer(videoView);
+//                videoView.setVideoURI(Uri.fromFile(GBVStatus.getFile()));
+//                videoView.requestFocus();
+//
+//                ((ViewGroup) mediaController.getParent()).removeView(mediaController);
+//
+//                if (mediaControls.getParent() != null) {
+//                    mediaControls.removeView(mediaController);
+//                }
+//
+//                mediaControls.addView(mediaController);
+//
+//                final AlertDialog alert2 = alertDg.create();
+//
+//                alert2.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+//                alert2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                alert2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//
+//                alert2.show();
 
             } else {
+                String filePath = GBVStatus.getFile().getAbsolutePath();
+                Intent intent = new Intent(context, GBV_ImageActivity.class);
+                intent.putExtra("picture", filePath);
+                context.startActivity(intent);
 
-                final AlertDialog.Builder alertD = new AlertDialog.Builder(context);
-                LayoutInflater inflater1 = LayoutInflater.from(context);
-                View view = inflater1.inflate(R.layout.gbv_view_image_full_screen, null);
-                alertD.setView(view);
-
-                ImageView imageView = view.findViewById(R.id.img);
-                Picasso.get().load(GBVStatus.getFile()).into(imageView);
-
-                AlertDialog alert = alertD.create();
-                alert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-                alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
-                alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                alert.show();
+//                final AlertDialog.Builder alertD = new AlertDialog.Builder(context);
+//                LayoutInflater inflater1 = LayoutInflater.from(context);
+//                View view = inflater1.inflate(R.layout.gbv_view_image_full_screen, null);
+//                alertD.setView(view);
+//
+//                ImageView imageView = view.findViewById(R.id.img);
+//                Picasso.get().load(GBVStatus.getFile()).into(imageView);
+//
+//                AlertDialog alert = alertD.create();
+//                alert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+//                alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//                alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+//                alert.show();
 
             }
 

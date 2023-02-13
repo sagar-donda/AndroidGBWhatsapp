@@ -24,6 +24,11 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.appopen.AppOpenAd;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -31,11 +36,21 @@ import com.karumi.dexter.listener.DexterError;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.PermissionRequestErrorListener;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
-import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.RecyclerData;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.RetrofitAPI;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
 import java.util.List;
 import java.util.Objects;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class GBV_SplashActivity extends GBV_BaseActivity {
 
@@ -46,16 +61,22 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
     };
     private static final String MANAGE_EXTERNAL_STORAGE_PERMISSION = "android:manage_external_storage";
     private final Handler handler = new Handler();
+    AppOpenAd appOpenAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_splash);
         if (!arePermissionDenied()) {
+            getdattata();
+        } else {
+            requestPermissions();
+        }
+
+        if (!arePermissionDenied()) {
             next();
             return;
         }
-        requestPermissions();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
 
             // If Android 11 Request for Manage File Access Permission
@@ -69,6 +90,85 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
             requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
         }
     }
+
+    public void getdattata() {
+        try {
+            String adsu = "https://metalineappstudio.com/";
+            Retrofit retrofit = new Retrofit.Builder().baseUrl(adsu).addConverterFactory(GsonConverterFactory.create()).build();
+            RetrofitAPI loginService = retrofit.create(RetrofitAPI.class);
+            Call<RecyclerData> call = loginService.getCourse("metalineapproid/testads/appdata.json");
+            call.enqueue(new Callback<RecyclerData>() {
+                @Override
+                public void onResponse(Call<RecyclerData> call, Response<RecyclerData> response) {
+                    if (response.body() != null) {
+                        RecyclerData appAdModel = response.body();
+                        Constant.AD_STATUS = appAdModel.getadStatus();
+                        Constant.PRIVACY_POLICY = appAdModel.getprivacypolicy();
+                        Constant.MORE_APPS = appAdModel.getmoreapps();
+                        if (Constant.AD_STATUS == "true") {
+                            Constant.AD_STATUS = appAdModel.getadStatus();
+                            Constant.BANNER_VISIBLE = appAdModel.getshow_banner();
+                            Constant.FBAD_STATUS = appAdModel.getfb_adstatus();
+                            Constant.FBBANNER_VISIBLE = appAdModel.getshow_fb_banner();
+                            Constant.APP_OPEN_ID = appAdModel.getappopenad1();
+                            Constant.ADMOB_BANNER_ID = appAdModel.getbanner();
+                            Constant.INTERSTRIAL_ID = appAdModel.getinterstitial();
+                            Constant.NATIVE_ID = appAdModel.getnative1();
+                            Constant.FBBANNER_ID = appAdModel.getfb_banner();
+                            Constant.FBNATIVE_ID = appAdModel.getfb_native();
+                            Constant.FBINTERSTRIAL_ID = appAdModel.getfb_interstitial();
+                            Constant.NEXT_CLICK_COUNT = appAdModel.getfullscreenadcount();
+                            Constant.PRIVACY_POLICY = appAdModel.getprivacypolicy();
+                            Constant.MORE_APPS = appAdModel.getmoreapps();
+
+                            System.out.println("throwable" + appAdModel.getadStatus());
+                            System.out.println("throwable" + appAdModel.getshow_banner());
+                            System.out.println("throwable" + appAdModel.getfb_adstatus());
+                            System.out.println("throwable" + appAdModel.getshow_fb_banner());
+                            System.out.println("throwable" + appAdModel.getappopenad1());
+                            System.out.println("throwable" + appAdModel.getbanner());
+                            System.out.println("throwable" + appAdModel.getinterstitial());
+                            System.out.println("throwable" + appAdModel.getnative1());
+                            System.out.println("throwable" + appAdModel.getfb_banner());
+                            System.out.println("throwable" + appAdModel.getfb_native());
+                            System.out.println("throwable" + appAdModel.getfb_interstitial());
+                            System.out.println("throwable" + appAdModel.getfullscreenadcount());
+                            System.out.println("throwable" + appAdModel.getprivacypolicy());
+                            System.out.println("throwable" + appAdModel.getmoreapps());
+                            Ad_class.loadInterAd(GBV_SplashActivity.this);
+                            if (Constant.AD_STATUS == "true") {
+                                appOPEN();
+                            } else {
+                                next();
+                            }
+                        } else {
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    next();
+                                }
+                            }, 2000L);
+
+                        }
+                    }
+                }
+
+                @Override
+                public void onFailure(Call<RecyclerData> call, Throwable t) {
+                    Toast.makeText(GBV_SplashActivity.this, "Fail to get the data..", Toast.LENGTH_SHORT).show();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            next();
+                        }
+                    }, 5000L);
+                }
+            });
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
     private void requestPermissions() {
         Dexter.withContext(GBV_SplashActivity.this)
                 .withPermissions(CAMERA,
@@ -125,6 +225,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
         });
         builder.show();
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -162,7 +263,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
 
         handler.postDelayed(() -> {
             opennectscreen();
-        }, 1000);
+        }, 5000);
 
     }
 
@@ -180,7 +281,6 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
         return false;
     }
 
-
     public void opennectscreen() {
         Boolean isFirstRun = getSharedPreferences("PREFERENCE", MODE_PRIVATE).getBoolean("isFirstRun", true);
         getSharedPreferences("PREFERENCE", MODE_PRIVATE).edit().putBoolean("isFirstRun", false).commit();
@@ -191,5 +291,38 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
             startActivity(new Intent(GBV_SplashActivity.this, GBV_MainActivity.class));
             finish();
         }
+    }
+
+    public void appOPEN() {
+        AdRequest request = new AdRequest.Builder().build();
+        AppOpenAd.load(GBV_SplashActivity.this, Constant.APP_OPEN_ID, request, AppOpenAd.APP_OPEN_AD_ORIENTATION_PORTRAIT, new AppOpenAd.AppOpenAdLoadCallback() {
+            @Override
+            public void onAdLoaded(AppOpenAd ad) {
+                appOpenAd = ad;
+                appOpenAd.show(GBV_SplashActivity.this);
+                appOpenAd.setFullScreenContentCallback(new FullScreenContentCallback() {
+                    @Override
+                    public void onAdDismissedFullScreenContent() {
+                        appOpenAd = null;
+                        next();
+                    }
+
+                    @Override
+                    public void onAdFailedToShowFullScreenContent(AdError adError) {
+                        appOpenAd = null;
+//                        startMainActivity();
+                    }
+
+                    @Override
+                    public void onAdShowedFullScreenContent() {
+                    }
+                });
+            }
+
+            @Override
+            public void onAdFailedToLoad(LoadAdError loadAdError) {
+//                startMainActivity();
+            }
+        });
     }
 }

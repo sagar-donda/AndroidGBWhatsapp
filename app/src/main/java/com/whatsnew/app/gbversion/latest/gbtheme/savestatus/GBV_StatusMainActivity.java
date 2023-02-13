@@ -1,20 +1,19 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus;
 
-import static com.whatsnew.app.gbversion.latest.gbtheme.whatsWebScan.GBV_WebActivity.handler;
-
 import android.Manifest;
-import android.app.ActivityManager;
 import android.app.AppOpsManager;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.provider.Settings;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -29,7 +28,6 @@ import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter.GBV_PageAdap
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
 
 import java.io.File;
-import java.util.Objects;
 
 public class GBV_StatusMainActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSIONS = 1234;
@@ -37,9 +35,8 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.WRITE_EXTERNAL_STORAGE
     };
-    TabLayout tabLayout;
     private static final String MANAGE_EXTERNAL_STORAGE_PERMISSION = "android:manage_external_storage";
-
+    static TabLayout tabLayout;
     private ViewPager viewPager;
 
     @Override
@@ -51,6 +48,25 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 onBackPressed();
+            }
+        });
+        findViewById(R.id.wp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent localIntent = getPackageManager().getLaunchIntentForPackage("com.whatsapp");
+                if (isPackageInstalled("com.whatsapp", getPackageManager())) {
+                    try {
+                        startActivity(localIntent);
+                        return;
+                    } catch (ActivityNotFoundException e) {
+                        startActivity(new Intent("android.intent.action.VIEW", Uri.parse("https://play.google.com/store/apps/details?id=com.whatsapp")));
+                        return;
+                    }
+                } else {
+                    Toast.makeText(GBV_StatusMainActivity.this, "Whatsapp not install in your device!", 0).show();
+                    return;
+                }
+
             }
         });
 
@@ -97,6 +113,13 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                if (tabLayout.getSelectedTabPosition() == 0) {
+                    setTabBG(R.drawable.tab1, R.drawable.tab2, R.drawable.tab3);
+                } else if (tabLayout.getSelectedTabPosition() == 1) {
+                    setTabBG(R.drawable.tab4, R.drawable.tabs5, R.drawable.tab3);
+                } else {
+                    setTabBG(R.drawable.tab4, R.drawable.tab2, R.drawable.tab6);
+                }
             }
 
             @Override
@@ -106,12 +129,19 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
-
+                if (tabLayout.getSelectedTabPosition() == 0) {
+                    setTabBG(R.drawable.tab1, R.drawable.tab2, R.drawable.tab3);
+                } else if (tabLayout.getSelectedTabPosition() == 1) {
+                    setTabBG(R.drawable.tab4, R.drawable.tabs5, R.drawable.tab3);
+                } else {
+                    setTabBG(R.drawable.tab4, R.drawable.tab2, R.drawable.tab6);
+                }
             }
         });
 
     }
-    private void setTabBG(int tab1, int tab2, int tab3) {
+
+    public static void setTabBG(int tab1, int tab2, int tab3) {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.JELLY_BEAN_MR1) {
             ViewGroup tabStrip = (ViewGroup) tabLayout.getChildAt(0);
             View tabView1 = tabStrip.getChildAt(0);
@@ -128,6 +158,15 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
             }
         }
     }
+    private boolean isPackageInstalled(String packageName, PackageManager packageManager) {
+        try {
+            packageManager.getPackageInfo(packageName, 0);
+            return true;
+        } catch (PackageManager.NameNotFoundException e) {
+            return false;
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     boolean checkStorageApi30() {
         AppOpsManager appOps = getApplicationContext().getSystemService(AppOpsManager.class);
@@ -157,7 +196,6 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setTabBG(R.drawable.tab1, R.drawable.tab2, R.drawable.tab3);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
             requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
             return;

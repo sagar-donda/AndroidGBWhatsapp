@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/top"
@@ -59,29 +60,28 @@
             android:layout_marginEnd="@dimen/_5sdp"
             android:padding="@dimen/_5sdp"
             android:src="@drawable/wps"
-            android:visibility="visible" />
+            android:visibility="invisible" />
     </LinearLayout>
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tabLayout"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
         android:layout_below="@+id/top"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/_5sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginRight="@dimen/_5sdp"
-        android:background="#F5F5F5"
-        app:tabIndicator="@null"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextAppearance="@style/tab_text"
-        app:tabTextColor="#252525" />
+        android:layout_height="match_parent">
 
-    <androidx.viewpager.widget.ViewPager
-        android:id="@+id/viewPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/tabLayout"
-        android:layout_marginTop="@dimen/_15sdp" />
+        <VideoView
+            android:id="@+id/video_full"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_400sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_gravity="center" />
+
+        <FrameLayout
+            android:id="@+id/videoViewWrapper"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center" />
+    </RelativeLayout>
+
 
 </RelativeLayout>

@@ -48,7 +48,12 @@ public class GBV_ImageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+//                swipeRefreshLayout.setRefreshing(true);
+            }
+        }, 1000L);
         recyclerView = view.findViewById(R.id.recyclerViewImage);
         progressBar = view.findViewById(R.id.prgressBarImage);
         container = view.findViewById(R.id.image_container);

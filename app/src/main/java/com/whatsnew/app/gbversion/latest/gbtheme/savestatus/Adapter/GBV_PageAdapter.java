@@ -1,10 +1,13 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
+import static com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_StatusMainActivity.setTabBG;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
+import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Fragments.GBV_ImageFragment;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Fragments.GBV_SavedFilesFragment;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Fragments.GBV_VideoFragment;
@@ -24,8 +27,9 @@ public class GBV_PageAdapter extends FragmentPagerAdapter {
 
         if (position == 1) {
             return new GBV_VideoFragment();
-        } else if (position == 2)
+        } else if (position == 2) {
             return new GBV_SavedFilesFragment();
+        }
         return new GBV_ImageFragment();
 
     }

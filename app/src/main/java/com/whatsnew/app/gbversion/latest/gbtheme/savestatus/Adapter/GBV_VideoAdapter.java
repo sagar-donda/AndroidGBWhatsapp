@@ -43,14 +43,10 @@ public class GBV_VideoAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
     @NonNull
     @Override
     public GBV_ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.gbv_item_status, parent, false);
         return new GBV_ItemViewHolder(view);
-
     }
-
-
 
     @Override
     public void onBindViewHolder(@NonNull final GBV_ItemViewHolder holder, int position) {

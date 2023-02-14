@@ -8,10 +8,6 @@
     
     </style>
 
-    <style name="SlidingDialogAnimation">
-        <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
-        <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
-    </style>
     <style name="tab_text" parent="@android:style/TextAppearance.Widget.TabWidget">
         <item name="android:fontFamily">@font/sbold</item>
         <item name="android:textSize">12sp</item>

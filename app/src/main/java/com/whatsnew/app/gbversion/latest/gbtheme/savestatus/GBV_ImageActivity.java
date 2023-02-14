@@ -1,5 +1,7 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus;
 
+import static com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Fragments.GBV_ImageFragment.GBVImageAdapter;
+import static com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Fragments.GBV_ImageFragment.swipeRefreshLayout;
 import static com.whatsnew.app.gbversion.latest.gbtheme.walkChat.GBV_BasicAccessibilityService.context;
 
 import android.content.Intent;
@@ -40,10 +42,9 @@ public class GBV_ImageActivity extends AppCompatActivity {
                 File fdelete = new File(path);
                 if (fdelete.exists()) {
                     if (fdelete.delete()) {
-                        Toast.makeText(GBV_ImageActivity.this, "123", Toast.LENGTH_SHORT).show();
                         onBackPressed();
-                    } else {
-                        Toast.makeText(GBV_ImageActivity.this, "abc", Toast.LENGTH_SHORT).show();
+                        GBVImageAdapter.notifyDataSetChanged();
+                        swipeRefreshLayout.setRefreshing(true);
                     }
                 }
             }

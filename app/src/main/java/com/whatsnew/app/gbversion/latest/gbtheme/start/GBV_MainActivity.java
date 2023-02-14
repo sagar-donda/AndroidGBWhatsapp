@@ -163,6 +163,7 @@ public class GBV_MainActivity extends GBV_BaseActivity {
         findViewById(R.id.StatusSaver).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if (!arePermissionDenied()) {
                     next();
                     return;

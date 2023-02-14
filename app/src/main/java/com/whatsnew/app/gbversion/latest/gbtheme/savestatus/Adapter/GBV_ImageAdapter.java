@@ -1,5 +1,6 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -33,22 +34,20 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
     @NonNull
     @Override
     public GBV_ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.gbv_item_status, parent, false);
         return new GBV_ItemViewHolder(view);
 
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull final GBV_ItemViewHolder holder, int position) {
         final GBV_Status GBVStatus = imagesList.get(position);
         Picasso.get().load(GBVStatus.getFile()).into(holder.imageView);
-
         holder.save.setOnClickListener(v -> GBV_Common.copyFile(GBVStatus, context, container));
 
         holder.share.setOnClickListener(v -> {
-
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("image/jpg");
             shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse("file://" + GBVStatus.getFile().getAbsolutePath()));
@@ -75,7 +74,6 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
 //            alert.show();
 
         });
-        notifyDataSetChanged();
     }
 
     @Override

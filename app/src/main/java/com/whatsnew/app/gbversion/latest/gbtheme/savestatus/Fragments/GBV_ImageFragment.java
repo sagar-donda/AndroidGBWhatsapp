@@ -34,9 +34,9 @@ public class GBV_ImageFragment extends Fragment {
     private ProgressBar progressBar;
     private final List<GBV_Status> imagesList = new ArrayList<>();
     private final Handler handler = new Handler();
-    private GBV_ImageAdapter GBVImageAdapter;
+    public static GBV_ImageAdapter GBVImageAdapter;
     private RelativeLayout container;
-    private SwipeRefreshLayout swipeRefreshLayout;
+    public static SwipeRefreshLayout swipeRefreshLayout;
     private TextView messageTextView;
 
     @Nullable
@@ -48,12 +48,6 @@ public class GBV_ImageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-//                swipeRefreshLayout.setRefreshing(true);
-            }
-        }, 1000L);
         recyclerView = view.findViewById(R.id.recyclerViewImage);
         progressBar = view.findViewById(R.id.prgressBarImage);
         container = view.findViewById(R.id.image_container);
@@ -73,19 +67,15 @@ public class GBV_ImageFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), GBV_Common.GRID_COUNT));
         recyclerView.setAdapter(GBVImageAdapter);
-
         getStatus();
 
     }
 
     private void getStatus() {
-
         if (GBV_Common.STATUS_DIRECTORY.exists()) {
-
             execute(GBV_Common.STATUS_DIRECTORY);
 
         } else if (GBV_Common.STATUS_DIRECTORY_NEW.exists()) {
-
             execute(GBV_Common.STATUS_DIRECTORY_NEW);
 
         } else {
@@ -145,4 +135,12 @@ public class GBV_ImageFragment extends Fragment {
         }).start();
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        GBVImageAdapter = new GBV_ImageAdapter(imagesList, container);
+        recyclerView.setAdapter(GBVImageAdapter);
+        GBVImageAdapter.notifyDataSetChanged();
+//        swipeRefreshLayout.setRefreshing(true);
+    }
 }

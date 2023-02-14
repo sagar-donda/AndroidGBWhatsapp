@@ -1,6 +1,7 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus;
 
 import android.Manifest;
+import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -26,8 +28,10 @@ import com.google.android.material.tabs.TabLayout;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter.GBV_PageAdapter;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
+import com.whatsnew.app.gbversion.latest.gbtheme.status.Commonclass;
 
 import java.io.File;
+import java.util.Objects;
 
 public class GBV_StatusMainActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSIONS = 1234;
@@ -167,6 +171,18 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_PERMISSIONS && grantResults.length > 0) {
+            if (arePermissionDenied()) {
+                ((ActivityManager) Objects.requireNonNull(this.getSystemService(ACTIVITY_SERVICE))).clearApplicationUserData();
+                recreate();
+            }
+        }
+    }
+
     @RequiresApi(api = Build.VERSION_CODES.R)
     boolean checkStorageApi30() {
         AppOpsManager appOps = getApplicationContext().getSystemService(AppOpsManager.class);
@@ -201,7 +217,7 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
             return;
         }
 
-        GBV_Common.APP_DIR = Environment.getExternalStorageDirectory().getPath() +
+        Commonclass.APP_DIR = Environment.getExternalStorageDirectory().getPath() +
                 File.separator + "StatusDownloader";
 
     }

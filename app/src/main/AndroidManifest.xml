@@ -45,6 +45,34 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup,android:fullBackupContent">
+
+        <activity
+            android:name=".status.MainActivitycalss"
+            android:exported="true"
+            android:label="@string/app_name"/>
+        <activity
+            android:name=".status.SavedFilesActivityclass"
+            android:exported="true"
+            android:parentActivityName=".status.MainActivitycalss">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".status.MainActivitycalss" />
+        </activity>
+
+        <activity
+            android:name=".status.ViewFullVideoActivityclass"
+            android:exported="true" />
+        <activity
+            android:name=".status.ViewFullImageActivityclass"
+            android:exported="true" />
+        <activity
+            android:name=".status.Whatsapp_Statusclass"
+            android:exported="true"
+            android:parentActivityName=".status.MainActivitycalss">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".status.MainActivitycalss" />
+        </activity>
         <activity
             android:name=".savestatus.GBV_VideoActivity"
             android:exported="false" />

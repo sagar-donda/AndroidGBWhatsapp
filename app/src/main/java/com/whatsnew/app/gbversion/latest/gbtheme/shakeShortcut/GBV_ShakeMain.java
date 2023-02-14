@@ -22,7 +22,7 @@ import androidx.work.OneTimeWorkRequest;
 import androidx.work.WorkManager;
 
 
-import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_MyWorker;

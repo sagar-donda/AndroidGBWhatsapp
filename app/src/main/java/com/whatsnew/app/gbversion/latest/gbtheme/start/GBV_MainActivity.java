@@ -57,9 +57,9 @@ public class GBV_MainActivity extends GBV_BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_main);
-        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame), this);
-        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame1), this);
-        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame2), this);
+//        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame), this);
+//        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame1), this);
+//        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame2), this);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

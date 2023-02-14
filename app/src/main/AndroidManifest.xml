@@ -31,7 +31,6 @@
     <uses-permission android:name="android.permission.ACTION_MANAGE_OVERLAY_PERMISSION" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="com.google.android.gms.permission.AD_ID" />
 
     <application
         android:allowBackup="true"
@@ -43,6 +42,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher"
         android:supportsRtl="true"
+<<<<<<< HEAD
         android:theme="@style/AppTheme"
         tools:replace="android:allowBackup,android:fullBackupContent">
 
@@ -79,6 +79,9 @@
         <activity
             android:name=".savestatus.GBV_ImageActivity"
             android:exported="false" />
+=======
+        android:theme="@style/AppTheme">
+>>>>>>> parent of 869856a (set ads)
         <activity
             android:name=".start.GBV_SettingActivity"
             android:exported="false"
@@ -90,7 +93,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".savestatus.GBV_StatusMainActivity"
+            android:name="com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_StatusMainActivity"
             android:exported="false"
             android:launchMode="singleTask"
             android:screenOrientation="portrait" />
@@ -227,10 +230,6 @@
                 <action android:name="restartservice" />
             </intent-filter>
         </receiver>
-
-        <meta-data
-            android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="@string/admob_app_id" />
     </application>
 
 </manifest>

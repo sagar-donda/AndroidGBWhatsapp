@@ -1,13 +1,11 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,8 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
-import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_ImageActivity;
-import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_VideoActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
 
@@ -64,56 +60,52 @@ public class GBV_VideoAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
 
         });
 
-//        LayoutInflater inflater = LayoutInflater.from(context);
-//        final View view1 = inflater.inflate(R.layout.gbv_view_video_full_screen, null);
+        LayoutInflater inflater = LayoutInflater.from(context);
+        final View view1 = inflater.inflate(R.layout.gbv_view_video_full_screen, null);
 
         holder.imageView.setOnClickListener(v -> {
-            String filePath = GBVStatus.getFile().getAbsolutePath();
-            Intent intent = new Intent(context, GBV_VideoActivity.class);
-            intent.putExtra("video", filePath);
-            context.startActivity(intent);
 
-//            final AlertDialog.Builder alertDg = new AlertDialog.Builder(context);
-//
-//            FrameLayout mediaControls = view1.findViewById(R.id.videoViewWrapper);
-//
-//            if (view1.getParent() != null) {
-//                ((ViewGroup) view1.getParent()).removeView(view1);
-//            }
-//
-//            alertDg.setView(view1);
-//
-//            final VideoView videoView = view1.findViewById(R.id.video_full);
-//
-//            final MediaController mediaController = new MediaController(context, false);
-//
-//            videoView.setOnPreparedListener(mp -> {
-//
-//                mp.start();
-//                mediaController.show(0);
-//                mp.setLooping(true);
-//            });
-//
-//            videoView.setMediaController(mediaController);
-//            mediaController.setMediaPlayer(videoView);
-//            videoView.setVideoURI(Uri.fromFile(GBVStatus.getFile()));
-//            videoView.requestFocus();
-//
-//            ((ViewGroup) mediaController.getParent()).removeView(mediaController);
-//
-//            if (mediaControls.getParent() != null) {
-//                mediaControls.removeView(mediaController);
-//            }
-//
-//            mediaControls.addView(mediaController);
-//
-//            final AlertDialog alert2 = alertDg.create();
-//
-//            alert2.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-//            alert2.requestWindowFeature(Window.FEATURE_NO_TITLE);
-//            alert2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-//
-//            alert2.show();
+            final AlertDialog.Builder alertDg = new AlertDialog.Builder(context);
+
+            FrameLayout mediaControls = view1.findViewById(R.id.videoViewWrapper);
+
+            if (view1.getParent() != null) {
+                ((ViewGroup) view1.getParent()).removeView(view1);
+            }
+
+            alertDg.setView(view1);
+
+            final VideoView videoView = view1.findViewById(R.id.video_full);
+
+            final MediaController mediaController = new MediaController(context, false);
+
+            videoView.setOnPreparedListener(mp -> {
+
+                mp.start();
+                mediaController.show(0);
+                mp.setLooping(true);
+            });
+
+            videoView.setMediaController(mediaController);
+            mediaController.setMediaPlayer(videoView);
+            videoView.setVideoURI(Uri.fromFile(GBVStatus.getFile()));
+            videoView.requestFocus();
+
+            ((ViewGroup) mediaController.getParent()).removeView(mediaController);
+
+            if (mediaControls.getParent() != null) {
+                mediaControls.removeView(mediaController);
+            }
+
+            mediaControls.addView(mediaController);
+
+            final AlertDialog alert2 = alertDg.create();
+
+            alert2.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
+            alert2.requestWindowFeature(Window.FEATURE_NO_TITLE);
+            alert2.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+
+            alert2.show();
 
         });
 

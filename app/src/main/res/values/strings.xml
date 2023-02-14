@@ -32,7 +32,12 @@
     <string name="no_files_found">No Files Found</string>
     <string name="cant_find_whatsapp_dir">Cant find WhatsApp Dir</string>
 
+<<<<<<< HEAD
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+=======
+    <string name="exit_app_message">Want to exit?</string>
+    <string name="confirm_dismiss_message">No</string>
+>>>>>>> parent of 869856a (set ads)
 
     <string name="download">Download</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>

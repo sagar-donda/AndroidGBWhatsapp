@@ -23,7 +23,7 @@ import android.widget.RelativeLayout.LayoutParams;
 
 import androidx.annotation.RequiresApi;
 
-import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.service.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
 public class GBV_WebActivity extends GBV_BaseActivity {

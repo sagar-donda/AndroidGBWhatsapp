@@ -48,6 +48,10 @@ public class GBV_ImageFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 869856a (set ads)
         recyclerView = view.findViewById(R.id.recyclerViewImage);
         progressBar = view.findViewById(R.id.prgressBarImage);
         container = view.findViewById(R.id.image_container);

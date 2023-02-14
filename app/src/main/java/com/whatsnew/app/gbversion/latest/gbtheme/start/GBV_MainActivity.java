@@ -19,6 +19,7 @@ import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
@@ -43,10 +44,7 @@ import java.util.Objects;
 
 public class GBV_MainActivity extends GBV_BaseActivity {
     private static final int REQUEST_PERMISSIONS = 1234;
-    private static final String[] PERMISSIONS = {
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-    };
+    private static final String[] PERMISSIONS = {Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private static final String MANAGE_EXTERNAL_STORAGE_PERMISSION = "android:manage_external_storage";
 
     ImageView whatsWeb;
@@ -57,9 +55,10 @@ public class GBV_MainActivity extends GBV_BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_main);
-//        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame), this);
-//        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame1), this);
-//        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame2), this);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame), this);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame1), this);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame2), this);
+        Ad_class.refreshAd((FrameLayout) findViewById(R.id.native_frame3), this);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -79,25 +78,75 @@ public class GBV_MainActivity extends GBV_BaseActivity {
         findViewById(R.id.reply).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_ReplyActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            startActivity(new Intent(GBV_MainActivity.this, GBV_ReplyActivity.class));
+                        }
+                    });
+                } else {
+                    startActivity(new Intent(GBV_MainActivity.this, GBV_ReplyActivity.class));
+                }
             }
         });
         findViewById(R.id.chat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                        }
+                    });
+                } else {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                }
+
+
             }
         });
         findViewById(R.id.blankm).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
+                        }
+                    });
+                } else {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
+                }
+
             }
         });
         findViewById(R.id.searchp).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
+                }
             }
         });
         findViewById(R.id.info).setOnClickListener(new View.OnClickListener() {
@@ -109,13 +158,47 @@ public class GBV_MainActivity extends GBV_BaseActivity {
         findViewById(R.id.directChat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
+                }
             }
         });
         findViewById(R.id.shortcut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+                }
             }
         });
         findViewById(R.id.whtsWeb).setOnClickListener(new View.OnClickListener() {
@@ -127,57 +210,189 @@ public class GBV_MainActivity extends GBV_BaseActivity {
         findViewById(R.id.walkchat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
+                }
             }
         });
         findViewById(R.id.chat).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                }
             }
         });
         findViewById(R.id.shortcut).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
+                }
             }
         });
         findViewById(R.id.cleaner).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
+                }
             }
         });
         findViewById(R.id.RepeatText).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
+                }
             }
         });
         findViewById(R.id.Textemoji).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
+
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
+                } else {
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
+                }
             }
         });
         findViewById(R.id.StatusSaver).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-                if (!arePermissionDenied()) {
-                    next();
-                    return;
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
                 }
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
 
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                        Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-
-                        startActivityForResult(intent, REQUEST_PERMISSIONS);
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    if (!arePermissionDenied()) {
+                        next();
                         return;
                     }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
 
-                    requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+
+                            startActivityForResult(intent, REQUEST_PERMISSIONS);
+                            return;
+                        }
+
+                        requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
+                    }
+                } else {
+                    if (!arePermissionDenied()) {
+                        next();
+                        return;
+                    }
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                            Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+
+                            startActivityForResult(intent, REQUEST_PERMISSIONS);
+                            return;
+                        }
+
+                        requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
+                    }
                 }
             }
         });
@@ -189,19 +404,14 @@ public class GBV_MainActivity extends GBV_BaseActivity {
 
         if (resultCode == RESULT_OK) {
 
-            new GBV_ShakeDetector(new GBV_ShakeOptions().background(Boolean.TRUE).interval(1000)
-                    .shakeCount(2).sensibility(2.0f)).start(this, new GBVShakeDetectListner());
+            new GBV_ShakeDetector(new GBV_ShakeOptions().background(Boolean.TRUE).interval(1000).shakeCount(2).sensibility(2.0f)).start(this, new GBVShakeDetectListner());
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
     boolean checkStorageApi30() {
         AppOpsManager appOps = getApplicationContext().getSystemService(AppOpsManager.class);
-        int mode = appOps.unsafeCheckOpNoThrow(
-                MANAGE_EXTERNAL_STORAGE_PERMISSION,
-                getApplicationContext().getApplicationInfo().uid,
-                getApplicationContext().getPackageName()
-        );
+        int mode = appOps.unsafeCheckOpNoThrow(MANAGE_EXTERNAL_STORAGE_PERMISSION, getApplicationContext().getApplicationInfo().uid, getApplicationContext().getPackageName());
         return mode != AppOpsManager.MODE_ALLOWED;
 
     }

@@ -80,6 +80,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_15sdp"
+        android:layout_above="@+id/linearAds"
         android:layout_below="@+id/tabLayout"/>
 
+    <LinearLayout
+        android:id="@+id/linearAds"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:minHeight="50dp"
+        android:orientation="vertical" />
 </RelativeLayout>

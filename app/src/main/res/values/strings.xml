@@ -32,34 +32,8 @@
     <string name="no_files_found">No Files Found</string>
     <string name="cant_find_whatsapp_dir">Cant find WhatsApp Dir</string>
 
-<<<<<<< HEAD
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
-=======
     <string name="exit_app_message">Want to exit?</string>
     <string name="confirm_dismiss_message">No</string>
->>>>>>> parent of 869856a (set ads)
-
-    <string name="download">Download</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="hide_bottom_view_on_scroll_behavior">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
-    <string name="icon_content_description">Dialog Icon</string>
-    <string name="image_save">Image Saved Successfully!</string>
-    <string name="image_saved">Image Saved!</string>
-    <string name="item_view_role_description">Tab</string>
-    <string name="no_file_found">No Files found!</string>
-    <string name="repost">Repost</string>
-    <string name="search_menu_title">Search</string>
-    <string name="share">Share</string>
-    <string name="status_bar_notification_info_overflow">999+</string>
-    <string name="tabimage">Images</string>
-    <string name="tabvideo">Videos</string>
-    <string name="unable_to_create">Unable to create directory!</string>
-    <string name="unable_to_save_image">Unable to save image!</string>
-    <string name="video_save">Video file saved successfully.</string>
-    <string name="video_save_fail">Video saving failed. Source file missing.</string>
-    <string name="video_saved">Video Saved!</string>
-    <string name="error_while_show_image">Error while showing image!</string>
-    <string name="wrong_path">Wrong Path Selected!</string>
-    <string name="please_allow_function">Please allow permission to avail functionalities!</string>
 
 </resources>

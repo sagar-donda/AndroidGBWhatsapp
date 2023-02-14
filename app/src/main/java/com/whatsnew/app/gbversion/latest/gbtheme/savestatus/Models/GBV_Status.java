@@ -8,7 +8,7 @@ public class GBV_Status {
     private String title;
     private String path;
     private boolean isVideo;
-
+    String uri;
     public GBV_Status(File file, String title, String path) {
         this.file = file;
         this.title = title;
@@ -16,7 +16,13 @@ public class GBV_Status {
         String MP4 = ".mp4";
         this.isVideo = file.getName().endsWith(MP4);
     }
+    public String getUri() {
+        return this.uri;
+    }
 
+    public void setUri(String str) {
+        this.uri = str;
+    }
     public File getFile() {
         return file;
     }

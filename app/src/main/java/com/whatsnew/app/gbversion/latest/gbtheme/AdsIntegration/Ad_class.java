@@ -57,21 +57,23 @@ public class Ad_class {
             }
         });
     }
-
-    public static void showInterAd(final Activity context, final Intent intent) {
+    public interface onLisoner {
+        void click();
+    }
+    public static void showInterAd(final Activity context, onLisoner onlisoner) {
         InterstitialAd interstitialAd = mInterstitialAd;
         if (adCounter == 1) {
             interstitialAd.setFullScreenContentCallback(new FullScreenContentCallback() {
                 @Override
                 public void onAdDismissedFullScreenContent() {
                     Ad_class.loadInterAd(context);
-                    Ad_class.startActivity(context, intent);
+                    onlisoner.click();
                 }
 
                 @Override
                 public void onAdFailedToShowFullScreenContent(AdError adError) {
                     if (Constant.FBAD_STATUS == "true") {
-                        showIntertitialAd(context, intent);
+                        showIntertitialAd(context, (Intent) onlisoner);
                     }
                 }
 
@@ -84,14 +86,15 @@ public class Ad_class {
         } else {
             if (adCounter == Constant.NEXT_CLICK_COUNT) {
                 adCounter = 0;
-                Ad_class.startActivity(context, intent);
+                onlisoner.click();
             } else {
-                Ad_class.startActivity(context, intent);
+                onlisoner.click();
             }
         }
 
 
     }
+
 
     static void startActivity(Context context, Intent intent) {
         context.startActivity(intent);

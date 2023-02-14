@@ -1,10 +1,5 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
-<<<<<<< HEAD
-import android.annotation.SuppressLint;
-=======
-import android.app.AlertDialog;
->>>>>>> parent of 869856a (set ads)
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -18,12 +13,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.emojiText.GBV_Texttoemoji;
+import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_ImageActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
+import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_MainActivity;
 
 import java.util.List;
 
@@ -41,21 +43,23 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
     @NonNull
     @Override
     public GBV_ItemViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+
         context = parent.getContext();
         View view = LayoutInflater.from(context).inflate(R.layout.gbv_item_status, parent, false);
         return new GBV_ItemViewHolder(view);
 
     }
 
-    @SuppressLint("NotifyDataSetChanged")
     @Override
     public void onBindViewHolder(@NonNull final GBV_ItemViewHolder holder, int position) {
 
         final GBV_Status GBVStatus = imagesList.get(position);
         Picasso.get().load(GBVStatus.getFile()).into(holder.imageView);
+
         holder.save.setOnClickListener(v -> GBV_Common.copyFile(GBVStatus, context, container));
 
         holder.share.setOnClickListener(v -> {
+
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
 
             shareIntent.setType("image/jpg");
@@ -63,28 +67,23 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
             context.startActivity(Intent.createChooser(shareIntent, "Share image"));
 
         });
-
+        String filePath = GBVStatus.getFile().getAbsolutePath();
         holder.imageView.setOnClickListener(v -> {
-
-            final AlertDialog.Builder alertD = new AlertDialog.Builder(context);
-            LayoutInflater inflater = LayoutInflater.from(context);
-            View view = inflater.inflate(R.layout.gbv_view_image_full_screen, null);
-            alertD.setView(view);
-
-            ImageView imageView = view.findViewById(R.id.img);
-            Picasso.get().load(GBVStatus.getFile()).into(imageView);
-
-            AlertDialog alert = alertD.create();
-            alert.getWindow().getAttributes().windowAnimations = R.style.SlidingDialogAnimation;
-            alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-            alert.show();
+            if (Constant.AD_STATUS == "true") {
+                Ad_class.adCounter++;
+                Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    @Override
+                    public void click() {
+                        Intent intent = new Intent(context, GBV_ImageActivity.class);
+                        intent.putExtra("picture", filePath);
+                        context.startActivity(intent);                    }
+                });
+            } else {
+                Intent intent = new Intent(context, GBV_ImageActivity.class);
+                intent.putExtra("picture", filePath);
+                context.startActivity(intent);            }
 
         });
-<<<<<<< HEAD
-=======
-
->>>>>>> parent of 869856a (set ads)
     }
 
     @Override

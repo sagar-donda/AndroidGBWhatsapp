@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F8FA">
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
 
     <LinearLayout
         android:id="@+id/top"
@@ -59,57 +59,28 @@
             android:layout_gravity="center"
             android:layout_marginEnd="@dimen/_5sdp"
             android:padding="@dimen/_5sdp"
-            android:src="@drawable/wps"
             android:visibility="invisible" />
     </LinearLayout>
 
-
     <RelativeLayout
-        android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/top">
+        android:layout_below="@+id/top"
+        android:layout_height="match_parent">
 
-        <LinearLayout
+        <VideoView
+            android:id="@+id/video_full"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/_8sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_8sdp"
-                android:background="#F5F8FA"
-                android:backgroundTint="#F5F8FA"
-                android:scrollbars="none"
-                app:tabGravity="fill"
-                app:tabIndicator="@null"
-                app:tabIndicatorColor="@null"
-                app:tabIndicatorHeight="4dp"
-                app:tabMaxWidth="0dp"
-                app:tabMode="fixed"
-                app:tabSelectedTextColor="@color/white"
-                app:tabTextColor="#858585" />
-
-            <androidx.viewpager.widget.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white" />
-        </LinearLayout>
+            android:layout_height="@dimen/_400sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:layout_gravity="center" />
 
         <FrameLayout
-            android:id="@+id/main_container3"
+            android:id="@+id/videoViewWrapper"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|center"
-            android:layout_weight="1"
-            android:background="@null"
-            android:visibility="visible" />
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center" />
     </RelativeLayout>
+
 
 </RelativeLayout>

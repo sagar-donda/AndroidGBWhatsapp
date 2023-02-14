@@ -8,7 +8,10 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.emojiText.GBV_Texttoemoji;
 
 public class GBV_ExitActivity extends AppCompatActivity {
     private TextView title;
@@ -26,7 +29,17 @@ public class GBV_ExitActivity extends AppCompatActivity {
         findViewById(R.id.no).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                if (Constant.AD_STATUS == "true") {
+                    Ad_class.adCounter++;
+                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                        @Override
+                        public void click() {
+                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                        }
+                    });
+                } else {
+                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                }
             }
         });
     }

@@ -10,4 +10,7 @@
     <color name="default_circular_progress_color">#103261</color>
     <color name="white">#ffffffff</color>
 
+    <color name="popup_btn_color">#e6f6ed</color>
+    <color name="txt">#532868</color>
+
 </resources>

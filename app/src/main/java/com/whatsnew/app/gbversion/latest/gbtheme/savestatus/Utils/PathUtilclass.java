@@ -1,4 +1,4 @@
-package com.whatsnew.app.gbversion.latest.gbtheme.status;
+package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils;
 
 import android.content.ContentUris;
 import android.content.Context;
@@ -11,7 +11,7 @@ import android.provider.MediaStore;
 
 import java.net.URISyntaxException;
 
-/* loaded from: classes.dex */
+
 public class PathUtilclass {
     /* JADX WARN: Removed duplicated region for block: B:32:0x00ac  */
     /* JADX WARN: Removed duplicated region for block: B:37:0x00ca  */

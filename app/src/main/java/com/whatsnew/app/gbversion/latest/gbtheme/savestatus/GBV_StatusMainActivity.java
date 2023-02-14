@@ -3,7 +3,6 @@ package com.whatsnew.app.gbversion.latest.gbtheme.savestatus;
 import static com.whatsnew.app.gbversion.latest.gbtheme.whatsWebScan.GBV_WebActivity.handler;
 
 import android.Manifest;
-import android.app.ActivityManager;
 import android.app.AppOpsManager;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,7 +13,6 @@ import android.provider.Settings;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.content.res.AppCompatResources;
@@ -27,10 +25,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter.GBV_PageAdapter;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
-import com.whatsnew.app.gbversion.latest.gbtheme.status.Commonclass;
 
 import java.io.File;
-import java.util.Objects;
 
 public class GBV_StatusMainActivity extends AppCompatActivity {
     private static final int REQUEST_PERMISSIONS = 1234;
@@ -138,18 +134,6 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_PERMISSIONS && grantResults.length > 0) {
-            if (arePermissionDenied()) {
-                ((ActivityManager) Objects.requireNonNull(this.getSystemService(ACTIVITY_SERVICE))).clearApplicationUserData();
-                recreate();
-            }
-        }
-    }
-
     @RequiresApi(api = Build.VERSION_CODES.R)
     boolean checkStorageApi30() {
         AppOpsManager appOps = getApplicationContext().getSystemService(AppOpsManager.class);
@@ -179,13 +163,12 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        setTabBG(R.drawable.tab1, R.drawable.tab2, R.drawable.tab3);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
             requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
             return;
         }
 
-        Commonclass.APP_DIR = Environment.getExternalStorageDirectory().getPath() +
+        GBV_Common.APP_DIR = Environment.getExternalStorageDirectory().getPath() +
                 File.separator + "StatusDownloader";
 
     }

@@ -1,15 +1,22 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdListener;
+import com.google.android.gms.ads.AdLoader;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
 import com.google.android.gms.ads.VideoController;
 import com.google.android.gms.ads.nativead.MediaView;
 import com.google.android.gms.ads.nativead.NativeAd;
@@ -21,21 +28,49 @@ import com.whatsnew.app.gbversion.latest.gbtheme.R;
 public class NativeBanner {
     public static boolean fb_native_load_random = true;
 
-    public static void NativeBanner(Context context, LinearLayout linearLayout) {
-        if (Constant.AD_STATUS == "true") {
-        linearLayout.removeAllViews();
-        if (Utill.nativeAd != null) {
-            NativeAdView nativeAdView = (NativeAdView) ((LayoutInflater) context.getSystemService("layout_inflater")).inflate(R.layout.am_native_bannet_ad_layout, (ViewGroup) null);
-            linearLayout.setVisibility(0);
-            fb_native_load_random = true;
-            populateNativeAdView(Utill.nativeAd, nativeAdView);
-            linearLayout.addView(nativeAdView);
-        } else {
-            linearLayout.setVisibility(8);
+        public static void NativeBanner(final FrameLayout frameLayout, final Activity activity) {
+            if (Constant.AD_STATUS == "true") {
+                AdLoader.Builder builder = new AdLoader.Builder(activity, Constant.NATIVE_ID);
+                builder.forNativeAd(new NativeAd.OnNativeAdLoadedListener() {
+                    @Override
+                    public void onNativeAdLoaded(NativeAd nativeAd2) {
+                        if ((Build.VERSION.SDK_INT >= 17 ? activity.isDestroyed() : false) || activity.isFinishing() || activity.isChangingConfigurations()) {
+                            nativeAd2.destroy();
+                            return;
+                        }
+                        if (Ad_class.nativeAd != null) {
+                            Ad_class.nativeAd.destroy();
+                        }
+                        Ad_class.nativeAd = nativeAd2;
+                        NativeAdView nativeAdView = (NativeAdView) activity.getLayoutInflater().inflate(R.layout.am_native_bannet_ad_layout, (ViewGroup) null);
+                        populateNativeAdView(nativeAd2, nativeAdView);
+                        frameLayout.removeAllViews();
+                        frameLayout.addView(nativeAdView);
+                    }
+                });
+                builder.withAdListener(new AdListener() {
+                    @Override
+                    public void onAdFailedToLoad(LoadAdError loadAdError) {
+                    }
+                }).build().loadAd(new AdRequest.Builder().build());
+            }
         }
-        Utill.fast_Admob_native(context);}
-    }
 
+//        if (Constant.AD_STATUS == "true") {
+//        linearLayout.removeAllViews();
+//        if (Utill.nativeAd != null) {
+//            NativeAdView nativeAdView = (NativeAdView) ((LayoutInflater) context.getSystemService("layout_inflater")).inflate(R.layout.am_native_bannet_ad_layout, (ViewGroup) null);
+//            linearLayout.setVisibility(0);
+//            fb_native_load_random = true;
+//            populateNativeAdView(Utill.nativeAd, nativeAdView);
+//            linearLayout.addView(nativeAdView);
+//        } else {
+//            linearLayout.setVisibility(8);
+//        }
+//        Utill.fast_Admob_native(context);}
+//    }
+
+    @SuppressLint("WrongConstant")
     public static void populateNativeAdView(NativeAd nativeAd2, NativeAdView nativeAdView) {
         nativeAdView.setMediaView((MediaView) nativeAdView.findViewById(R.id.ad_media));
         nativeAdView.setHeadlineView(nativeAdView.findViewById(R.id.ad_headline));
@@ -47,7 +82,7 @@ public class NativeBanner {
         nativeAdView.setStoreView(nativeAdView.findViewById(R.id.ad_store));
         nativeAdView.setAdvertiserView(nativeAdView.findViewById(R.id.ad_advertiser));
         ((TextView) nativeAdView.getHeadlineView()).setText(nativeAd2.getHeadline());
-        nativeAdView.getMediaView().setMediaContent(nativeAd2.getMediaContent());
+//        nativeAdView.getMediaView().setMediaContent(nativeAd2.getMediaContent());
         if (nativeAd2.getBody() == null) {
             nativeAdView.getBodyView().setVisibility(4);
         } else {
@@ -101,7 +136,5 @@ public class NativeBanner {
             });
         }
     }
-
-
 
 }

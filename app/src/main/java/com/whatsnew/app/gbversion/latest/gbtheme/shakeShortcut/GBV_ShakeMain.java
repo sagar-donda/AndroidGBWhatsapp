@@ -173,7 +173,7 @@ public class GBV_ShakeMain extends GBV_BaseActivity {
             Log.v("--shake_service--", "Requesting Permission" + Settings.canDrawOverlays(GBV_ShakeMain.this));
             Intent intent = new Intent(Settings.ACTION_MANAGE_OVERLAY_PERMISSION,
                     Uri.parse("package:" + getApplicationContext().getPackageName()));
-            startActivityForResult(intent, REQUEST_CODE); //It will call onActivityResult Function After you press Yes/No and go Back after giving permission
+            startActivityForResult(intent, REQUEST_CODE);
         } else {
             Log.v("--shake_service--", "We already have permission for it.");
         }

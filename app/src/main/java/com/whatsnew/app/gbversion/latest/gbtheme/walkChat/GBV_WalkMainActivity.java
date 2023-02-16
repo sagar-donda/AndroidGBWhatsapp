@@ -16,7 +16,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
@@ -25,13 +24,28 @@ import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.NativeBanner;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
-import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity;
-import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_MainActivity;
 
 public class GBV_WalkMainActivity extends GBV_BaseActivity {
     public static boolean isWalk = true;
     ImageView BtnWalk;
     ImageView OpenWhatsApp;
+
+    public static boolean accessibilityPermission(Context context, Class<?> cls) {
+        ComponentName componentName = new ComponentName(context, cls);
+        String string = Secure.getString(context.getContentResolver(), "enabled_accessibility_services");
+        if (string == null) {
+            return false;
+        }
+        SimpleStringSplitter simpleStringSplitter = new SimpleStringSplitter(':');
+        simpleStringSplitter.setString(string);
+        while (simpleStringSplitter.hasNext()) {
+            ComponentName unflattenFromString = ComponentName.unflattenFromString(simpleStringSplitter.next());
+            if (unflattenFromString != null && unflattenFromString.equals(componentName)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +69,21 @@ public class GBV_WalkMainActivity extends GBV_BaseActivity {
         this.OpenWhatsApp = findViewById(R.id.openWhatsapp);
         this.OpenWhatsApp.setOnClickListener(new btnOpenWhatsappListner());
         this.BtnWalk.setOnClickListener(new btnWalkListner());
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_WalkMainActivity.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
 
     private class btnOpenWhatsappListner implements OnClickListener {
@@ -93,38 +122,6 @@ public class GBV_WalkMainActivity extends GBV_BaseActivity {
             }
             GBV_WalkMainActivity.isWalk = true;
             BtnWalk.setImageResource(R.drawable.switch_on);
-        }
-    }
-
-    public static boolean accessibilityPermission(Context context, Class<?> cls) {
-        ComponentName componentName = new ComponentName(context, cls);
-        String string = Secure.getString(context.getContentResolver(), "enabled_accessibility_services");
-        if (string == null) {
-            return false;
-        }
-        SimpleStringSplitter simpleStringSplitter = new SimpleStringSplitter(':');
-        simpleStringSplitter.setString(string);
-        while (simpleStringSplitter.hasNext()) {
-            ComponentName unflattenFromString = ComponentName.unflattenFromString(simpleStringSplitter.next());
-            if (unflattenFromString != null && unflattenFromString.equals(componentName)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (Constant.AD_STATUS == "true") {
-            Ad_class.adCounter++;
-            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
-                @Override
-                public void click() {
-               GBV_WalkMainActivity.super.onBackPressed();
-                }
-            });
-        } else {
-          super.onBackPressed();
         }
     }
 }

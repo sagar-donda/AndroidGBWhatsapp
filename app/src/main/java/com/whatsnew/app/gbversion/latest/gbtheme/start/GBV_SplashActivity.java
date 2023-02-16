@@ -74,7 +74,6 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
         requestPermissions();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
 
-            // If Android 11 Request for Manage File Access Permission
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
                 Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
 
@@ -193,8 +192,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
             }
 
             @Override
-            public void onAdFailedToLoad(LoadAdError loadAdError) {
-                next();
+            public void onAdFailedToLoad(LoadAdError loadAdError) { next();
             }
         });
     }
@@ -259,9 +257,6 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (!arePermissionDenied()) {
-            next();
-        }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.R)
@@ -319,7 +314,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
             startActivity(new Intent(GBV_SplashActivity.this, GBV_FirstActivity.class));
             finishAffinity();
         } else {
-            startActivity(new Intent(GBV_SplashActivity.this, GBV_MainActivity.class));
+            startActivity(new Intent(GBV_SplashActivity.this, GBV_StartActivity.class));
             finish();
         }
     }

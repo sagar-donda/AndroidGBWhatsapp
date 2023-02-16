@@ -18,14 +18,11 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
-import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity;
-import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_MainActivity;
 
 public class GBV_MainTextRepeater extends GBV_BaseActivity {
     String Maintext;
@@ -97,6 +94,21 @@ public class GBV_MainTextRepeater extends GBV_BaseActivity {
         convertedText.setVerticalScrollBarEnabled(true);
     }
 
+    @Override
+    public void onBackPressed() {
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_MainTextRepeater.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
+    }
+
     private class btnConverListner implements OnClickListener {
         public void onClick(View view) {
             convertedText.setText("");
@@ -117,7 +129,8 @@ public class GBV_MainTextRepeater extends GBV_BaseActivity {
                 new CreateRepeateText().execute();
             } else {
                 Toast.makeText(getApplicationContext(), "Number of Repeter Text Limited Please Enter Limited Number", Toast.LENGTH_SHORT).show();
-            }        }
+            }
+        }
     }
 
     private class btnClearTextListner implements OnClickListener {
@@ -218,21 +231,6 @@ public class GBV_MainTextRepeater extends GBV_BaseActivity {
             isNewLine = true;
             txtNewLine.setText("New Line On");
             imNewLine.setImageResource(R.drawable.switch_on);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (Constant.AD_STATUS == "true") {
-            Ad_class.adCounter++;
-            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
-                @Override
-                public void click() {
-                  GBV_MainTextRepeater.super.onBackPressed();
-                }
-            });
-        } else {
-            super.onBackPressed();
         }
     }
 }

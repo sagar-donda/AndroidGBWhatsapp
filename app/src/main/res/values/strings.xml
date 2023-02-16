@@ -26,12 +26,25 @@
     <string name="app_not_installed">Not installed</string>
     <string name="app_package_name">com.whatsapp</string>
     <string name="app_playstore_url">https://play.google.com/store/apps/details?id=com.whatsapp</string>
-    <string name="images">Images</string>
-    <string name="videos">Videos</string>
-    <string name="saved_files">Saved Files</string>
-    <string name="no_files_found">No Files Found</string>
-    <string name="cant_find_whatsapp_dir">Cant find WhatsApp Dir</string>
 
     <string name="admob_app_id">ca-app-pub-3940256099942544~3347511713</string>
+
+    <string name="image_save">Image Saved Successfully!</string>
+    <string name="image_saved">Image Saved!</string>
+    <string name="no_file_found">No Files found!</string>
+    <string name="statuses">Statuses</string>
+    <string name="tabimage">Images</string>
+    <string name="tabvideo">Videos</string>
+    <string name="save">Downloads</string>
+
+    <string name="unable_to_create">Unable to create directory!</string>
+    <string name="unable_to_save_image">Unable to save image!</string>
+    <string name="video_save">Video file saved successfully.</string>
+    <string name="video_save_fail">Video saving failed. Source file missing.</string>
+    <string name="video_saved">Video Saved!</string>
+    <string name="wrong_path">Wrong Path Selected!</string>
+    <string name="please_allow_function">Please allow permission to avail functionalities!</string>
+    <string name="error_while_show_image">Error while showing image!</string>
+    <string name="whatsapp_not_install">Not Install</string>
 
 </resources>

@@ -30,12 +30,12 @@ import com.whatsnew.app.gbversion.latest.gbtheme.directChat.GBV_ChatDirect;
 import com.whatsnew.app.gbversion.latest.gbtheme.emojiText.GBV_Texttoemoji;
 import com.whatsnew.app.gbversion.latest.gbtheme.infowp.activity.GBV_InstallWPActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.reply.GBV_ReplyActivity;
-import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_StatusMainActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.searchprofile.GBV_SearchProfileActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.shakeShortcut.GBV_ShakeMain;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_ShakeCallback;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_ShakeDetector;
 import com.whatsnew.app.gbversion.latest.gbtheme.shake_Detector.GBV_ShakeOptions;
+import com.whatsnew.app.gbversion.latest.gbtheme.status.GBV_Whatsapp_Statusclass;
 import com.whatsnew.app.gbversion.latest.gbtheme.textRepeater.GBV_MainTextRepeater;
 import com.whatsnew.app.gbversion.latest.gbtheme.walkChat.GBV_WalkMainActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.whatsWebScan.GBV_WebActivity;
@@ -360,7 +360,7 @@ public class GBV_MainActivity extends GBV_BaseActivity {
     }
 
     private void next() {
-        startActivity(new Intent(GBV_MainActivity.this, GBV_StatusMainActivity.class));
+        startActivity(new Intent(GBV_MainActivity.this, GBV_Whatsapp_Statusclass.class));
     }
 
     private boolean arePermissionDenied() {
@@ -376,6 +376,7 @@ public class GBV_MainActivity extends GBV_BaseActivity {
         }
         return false;
     }
+
     @Override
     public void onBackPressed() {
         if (Constant.AD_STATUS == "true") {
@@ -383,13 +384,14 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             Ad_class.showInterAd(this, new Ad_class.onLisoner() {
                 @Override
                 public void click() {
-                    startActivity(new Intent(GBV_MainActivity.this, GBV_ExitActivity.class));
+                    GBV_MainActivity.super.onBackPressed();
                 }
             });
         } else {
-            startActivity(new Intent(GBV_MainActivity.this, GBV_ExitActivity.class));
+            super.onBackPressed();
         }
     }
+
     private class GBVShakeDetectListner implements GBV_ShakeCallback {
         public void onShake() {
             if (GBV_Utils.appInstalledOrNot(GBV_MainActivity.this, "com.whatsapp")) {

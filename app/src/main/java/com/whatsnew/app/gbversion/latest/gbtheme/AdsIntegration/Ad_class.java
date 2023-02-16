@@ -57,9 +57,7 @@ public class Ad_class {
             }
         });
     }
-    public interface onLisoner {
-        void click();
-    }
+
     public static void showInterAd(final Activity context, onLisoner onlisoner) {
         InterstitialAd interstitialAd = mInterstitialAd;
         if (adCounter == 1) {
@@ -94,7 +92,6 @@ public class Ad_class {
 
 
     }
-
 
     static void startActivity(Context context, Intent intent) {
         context.startActivity(intent);
@@ -260,6 +257,9 @@ public class Ad_class {
             builder.withAdListener(new AdListener() {
                 @Override
                 public void onAdFailedToLoad(LoadAdError loadAdError) {
+                    if (Constant.FBAD_STATUS == "true") {
+                        fbnative.loadNativeAd();
+                    }
                 }
             }).build().loadAd(new AdRequest.Builder().build());
         }
@@ -304,6 +304,10 @@ public class Ad_class {
     }
 
     public static void lambda$initAd$0(InitializationStatus initializationStatus) {
+    }
+
+    public interface onLisoner {
+        void click();
     }
 
 }

@@ -1,6 +1,5 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.blankmes;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -17,7 +16,6 @@ import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.NativeBanner;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
-import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_VideoActivity;
 
 public class GBV_BlankMesActivity extends AppCompatActivity {
     ImageView btn_send;

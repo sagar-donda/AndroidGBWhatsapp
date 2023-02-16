@@ -131,7 +131,7 @@ public class GBV_ShakeService extends Service {
 
         Intent closeIntent = new Intent(this, GBV_ShakeServiceNew.class);
         closeIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-        closeIntent.putExtra("destroyCode", 666); // this is the important line //
+        closeIntent.putExtra("destroyCode", 666);
         PendingIntent closePendingIntent = PendingIntent.getService(this, 0, closeIntent, PendingIntent.FLAG_MUTABLE);
 
         String NOTIFICATION_CHANNEL_ID = "whatstools.gbstatus.statussaver.tools";

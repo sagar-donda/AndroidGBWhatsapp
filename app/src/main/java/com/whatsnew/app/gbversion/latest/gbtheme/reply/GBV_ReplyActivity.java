@@ -7,8 +7,11 @@ import android.widget.LinearLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.chating.GBV_ChattingActivity;
 
 public class GBV_ReplyActivity extends GBV_BaseActivity {
     LinearLayout banner_ad;
@@ -17,6 +20,7 @@ public class GBV_ReplyActivity extends GBV_BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_reply);
+        Ad_class.all_banner(GBV_ReplyActivity.this, (LinearLayout) findViewById(R.id.adView));
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,6 +49,16 @@ public class GBV_ReplyActivity extends GBV_BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_ReplyActivity.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
 }

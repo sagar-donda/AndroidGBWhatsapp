@@ -2,41 +2,28 @@ package com.whatsnew.app.gbversion.latest.gbtheme.savestatus;
 
 import static com.whatsnew.app.gbversion.latest.gbtheme.walkChat.GBV_BasicAccessibilityService.context;
 
-import android.app.Person;
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.chating.GBV_ChattingActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
-import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
-import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.PathUtilclass;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.URISyntaxException;
 import java.util.List;
 
 public class GBV_ImageActivity extends AppCompatActivity {
     private GBV_Status imageModel;
     private List<GBV_Status> imagesList;
-    private  RelativeLayout container;
+    private RelativeLayout container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,8 +73,19 @@ public class GBV_ImageActivity extends AppCompatActivity {
         image.setImageBitmap(org_bmp);
 
     }
+
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_ImageActivity.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
 }

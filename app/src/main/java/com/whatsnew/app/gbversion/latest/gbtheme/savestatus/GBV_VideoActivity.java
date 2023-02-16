@@ -10,7 +10,11 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.chating.GBV_ChattingActivity;
+
 public class GBV_VideoActivity extends AppCompatActivity {
 
     @Override
@@ -61,9 +65,18 @@ public class GBV_VideoActivity extends AppCompatActivity {
             }
         });
     }
-
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_VideoActivity.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -22,7 +22,10 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.chating.GBV_ChattingActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter.GBV_PageAdapter;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Utils.GBV_Common;
 
@@ -175,7 +178,16 @@ public class GBV_StatusMainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_StatusMainActivity.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
-
 }

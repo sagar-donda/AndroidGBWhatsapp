@@ -111,10 +111,11 @@
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
     <LinearLayout
-        android:id="@+id/linearAds"
+        android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_gravity="center"
+        android:gravity="center"
         android:minHeight="50dp"
-        android:orientation="vertical" />
+        android:layout_alignParentBottom="true"/>
 </RelativeLayout>

@@ -1,5 +1,6 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -20,7 +21,6 @@ import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_ImageActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.GBV_VideoActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Models.GBV_Status;
-import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity;
 
 import java.util.List;
 
@@ -88,7 +88,7 @@ public class GBV_FilesAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
             if (GBVStatus.isVideo()) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd((Activity) context, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
                             String filePath = GBVStatus.getFile().getAbsolutePath();
@@ -107,7 +107,7 @@ public class GBV_FilesAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
             } else {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd((Activity) context, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
                             String filePath = GBVStatus.getFile().getAbsolutePath();

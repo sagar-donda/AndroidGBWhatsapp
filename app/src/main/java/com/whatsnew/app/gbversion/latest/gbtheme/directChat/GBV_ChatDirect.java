@@ -9,12 +9,14 @@ import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.hbb20.CountryCodePicker;
 import com.hbb20.CountryCodePicker.OnCountryChangeListener;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.NativeBanner;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 
@@ -28,6 +30,7 @@ public class GBV_ChatDirect extends GBV_BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_main_chat_direct);
+        NativeBanner.NativeBanner((FrameLayout) findViewById(R.id.ll_nativebanneradview), this);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

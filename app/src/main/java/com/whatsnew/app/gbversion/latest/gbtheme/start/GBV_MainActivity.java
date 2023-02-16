@@ -80,7 +80,7 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
                             startActivity(new Intent(GBV_MainActivity.this, GBV_ReplyActivity.class));
@@ -96,14 +96,14 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
                         }
                     });
                 } else {
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
                 }
 
 
@@ -114,14 +114,14 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
                         }
                     });
                 } else {
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
+                    GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_BlankMesActivity.class));
                 }
 
             }
@@ -131,19 +131,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_SearchProfileActivity.class));
                 }
@@ -160,19 +153,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChatDirect.class));
                 }
@@ -183,19 +169,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
                 }
@@ -212,19 +191,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_WalkMainActivity.class));
                 }
@@ -235,19 +207,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ChattingActivity.class));
                 }
@@ -258,19 +223,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_ShakeMain.class));
                 }
@@ -281,19 +239,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_WACleanMainActivity.class));
                 }
@@ -304,19 +255,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_MainTextRepeater.class));
                 }
@@ -327,19 +271,12 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_MainActivity.this, new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
                 } else {
                     GBV_MainActivity.this.startActivity(new Intent(GBV_MainActivity.this, GBV_Texttoemoji.class));
                 }
@@ -350,33 +287,26 @@ public class GBV_MainActivity extends GBV_BaseActivity {
             public void onClick(View view) {
                 if (Constant.AD_STATUS == "true") {
                     Ad_class.adCounter++;
-                    Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                    Ad_class.showInterAd(GBV_MainActivity.this, new Ad_class.onLisoner() {
                         @Override
                         public void click() {
-                            GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
+                            if (!arePermissionDenied()) {
+                                next();
+                                return;
+                            }
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
+
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                                    Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
+
+                                    startActivityForResult(intent, REQUEST_PERMISSIONS);
+                                    return;
+                                }
+
+                                requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
+                            }
                         }
                     });
-                } else {
-                    GBV_ExitActivity.this.startActivity(new Intent(GBV_ExitActivity.this, GBV_MainActivity.class));
-                }
-
-                if (Constant.AD_STATUS == "true") {
-                    Ad_class.adCounter++;
-                    if (!arePermissionDenied()) {
-                        next();
-                        return;
-                    }
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && arePermissionDenied()) {
-
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            Intent intent = new Intent(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-
-                            startActivityForResult(intent, REQUEST_PERMISSIONS);
-                            return;
-                        }
-
-                        requestPermissions(PERMISSIONS, REQUEST_PERMISSIONS);
-                    }
                 } else {
                     if (!arePermissionDenied()) {
                         next();
@@ -446,12 +376,20 @@ public class GBV_MainActivity extends GBV_BaseActivity {
         }
         return false;
     }
-
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(GBV_MainActivity.this, GBV_ExitActivity.class));
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    startActivity(new Intent(GBV_MainActivity.this, GBV_ExitActivity.class));
+                }
+            });
+        } else {
+            startActivity(new Intent(GBV_MainActivity.this, GBV_ExitActivity.class));
+        }
     }
-
     private class GBVShakeDetectListner implements GBV_ShakeCallback {
         public void onShake() {
             if (GBV_Utils.appInstalledOrNot(GBV_MainActivity.this, "com.whatsapp")) {

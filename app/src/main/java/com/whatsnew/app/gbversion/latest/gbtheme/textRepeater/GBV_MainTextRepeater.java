@@ -14,13 +14,18 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_MainActivity;
 
 public class GBV_MainTextRepeater extends GBV_BaseActivity {
     String Maintext;
@@ -43,6 +48,7 @@ public class GBV_MainTextRepeater extends GBV_BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_text_repeater);
+        Ad_class.all_banner(GBV_MainTextRepeater.this, (LinearLayout) findViewById(R.id.adView));
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -217,6 +223,16 @@ public class GBV_MainTextRepeater extends GBV_BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                  GBV_MainTextRepeater.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -1,5 +1,6 @@
 package com.whatsnew.app.gbversion.latest.gbtheme.savestatus.Adapter;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -71,7 +72,7 @@ public class GBV_ImageAdapter extends RecyclerView.Adapter<GBV_ItemViewHolder> {
         holder.imageView.setOnClickListener(v -> {
             if (Constant.AD_STATUS == "true") {
                 Ad_class.adCounter++;
-                Ad_class.showInterAd(GBV_ExitActivity.this, new Ad_class.onLisoner() {
+                Ad_class.showInterAd((Activity) context, new Ad_class.onLisoner() {
                     @Override
                     public void click() {
                         Intent intent = new Intent(context, GBV_ImageActivity.class);

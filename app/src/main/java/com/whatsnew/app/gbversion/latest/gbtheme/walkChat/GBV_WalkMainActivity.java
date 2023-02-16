@@ -20,10 +20,13 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.GBV_BaseActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.NativeBanner;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
+import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_ExitActivity;
+import com.whatsnew.app.gbversion.latest.gbtheme.start.GBV_MainActivity;
 
 public class GBV_WalkMainActivity extends GBV_BaseActivity {
     public static boolean isWalk = true;
@@ -112,6 +115,16 @@ public class GBV_WalkMainActivity extends GBV_BaseActivity {
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+               GBV_WalkMainActivity.super.onBackPressed();
+                }
+            });
+        } else {
+          super.onBackPressed();
+        }
     }
 }

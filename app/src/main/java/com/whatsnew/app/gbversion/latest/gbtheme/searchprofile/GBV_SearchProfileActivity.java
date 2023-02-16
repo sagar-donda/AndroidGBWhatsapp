@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -15,8 +16,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.hbb20.CountryCodePicker;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.NativeBanner;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.GBV_Utils;
+import com.whatsnew.app.gbversion.latest.gbtheme.chating.GBV_ChattingActivity;
 import com.whatsnew.app.gbversion.latest.gbtheme.directChat.GBV_Helper;
 
 public class GBV_SearchProfileActivity extends AppCompatActivity {
@@ -29,6 +34,7 @@ public class GBV_SearchProfileActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_search_profile);
+        NativeBanner.NativeBanner((FrameLayout) findViewById(R.id.ll_nativebanneradview), this);
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,9 +92,18 @@ public class GBV_SearchProfileActivity extends AppCompatActivity {
             GBV_SearchProfileActivity.this.preference.edit().putString("last_locale", GBV_SearchProfileActivity.this.CcP.getSelectedCountryCode()).apply();
         }
     }
-
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (Constant.AD_STATUS == "true") {
+            Ad_class.adCounter++;
+            Ad_class.showInterAd(this, new Ad_class.onLisoner() {
+                @Override
+                public void click() {
+                    GBV_SearchProfileActivity.super.onBackPressed();
+                }
+            });
+        } else {
+            super.onBackPressed();
+        }
     }
 }

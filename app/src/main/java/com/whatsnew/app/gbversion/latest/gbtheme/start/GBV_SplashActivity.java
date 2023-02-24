@@ -142,7 +142,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
                                 public void run() {
                                     next();
                                 }
-                            }, 5000L);
+                            }, 2500L);
 
                         }
                     }
@@ -156,7 +156,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
                         public void run() {
                             next();
                         }
-                    }, 5000L);
+                    }, 2500L);
                 }
             });
         } catch (Exception e) {
@@ -288,7 +288,7 @@ public class GBV_SplashActivity extends GBV_BaseActivity {
 
         handler.postDelayed(() -> {
             opennectscreen();
-        }, 5000L);
+        }, 2500L);
 
     }
 

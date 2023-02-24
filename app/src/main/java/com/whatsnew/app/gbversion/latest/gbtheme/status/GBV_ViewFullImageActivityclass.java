@@ -18,6 +18,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.potyvideo.slider.library.SliderLayout;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
@@ -43,12 +44,15 @@ public class GBV_ViewFullImageActivityclass extends AppCompatActivity {
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.gbv_activity_view_full_image_resource);
+
+
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onBackPressed();
             }
         });
+
         Ad_class.all_banner(GBV_ViewFullImageActivityclass.this, (LinearLayout) findViewById(R.id.adView));
         initView();
         if (getIntent().hasExtra("file")) {

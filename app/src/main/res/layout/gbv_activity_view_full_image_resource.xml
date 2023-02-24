@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     android:background="@color/black">
 
     <LinearLayout
@@ -68,13 +69,22 @@
         android:layout_above="@+id/linearfullimage"
         android:layout_below="@+id/top">
 
+<!--        <com.potyvideo.slider.library.SliderLayout-->
+<!--            android:id="@+id/slider"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            custom:auto_cycle="true"-->
+<!--            custom:indicator_visibility="visible"-->
+<!--            custom:pager_animation="Accordion"-->
+<!--            custom:pager_animation_span="1100" />-->
+
         <ImageView
             android:id="@+id/full_iv"
             android:layout_width="match_parent"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_5sdp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY" />
 
         <ImageView
             android:id="@+id/progress_bar"
@@ -96,8 +106,8 @@
         <ImageView
             android:id="@+id/fab_repost"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
             android:src="@drawable/repost"
             android:textAllCaps="false"
             android:textColor="@color/black" />
@@ -105,8 +115,8 @@
         <ImageView
             android:id="@+id/fab_share"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
             android:src="@drawable/sharest"
             android:textAllCaps="false"
             android:textColor="@color/black" />
@@ -114,18 +124,19 @@
         <ImageView
             android:id="@+id/fab_save"
             style="@style/Widget.AppCompat.Button.Borderless"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
             android:src="@drawable/downs"
             android:textAllCaps="false"
             android:textColor="@color/black" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/adView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
         android:layout_gravity="center"
         android:gravity="center"
-        android:minHeight="50dp"
-        android:layout_alignParentBottom="true"/>
+        android:minHeight="50dp" />
 </RelativeLayout>

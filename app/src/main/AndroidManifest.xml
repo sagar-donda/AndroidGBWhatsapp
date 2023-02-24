@@ -66,6 +66,7 @@
                 android:resource="@xml/file_provider_paths" />
         </provider>
 
+        <activity android:name=".status.GBV_Whatsapp_Statusclass" />
         <activity
             android:name=".start.GBV_SettingActivity"
             android:exported="false"

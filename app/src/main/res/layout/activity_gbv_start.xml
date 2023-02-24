@@ -25,8 +25,8 @@
         android:layout_marginHorizontal="@dimen/_30sdp"
         android:layout_marginTop="@dimen/_100sdp"
         android:adjustViewBounds="true"
-        android:visibility="invisible"
-        android:src="@drawable/imgo3" />
+        android:src="@drawable/imgo3"
+        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/txt"
@@ -36,24 +36,34 @@
         android:layout_marginHorizontal="@dimen/_40sdp"
         android:layout_marginTop="@dimen/_50sdp"
         android:adjustViewBounds="true"
-        android:src="@drawable/otxt3" />
+        android:src="@drawable/gb_version_plus" />
+
+    <ImageView
+        android:id="@+id/txt1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txt"
+        android:layout_marginHorizontal="@dimen/_55sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:adjustViewBounds="true"
+        android:src="@drawable/recover_deleted_whatapp_message" />
 
     <RelativeLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/txt"
-        android:layout_marginTop="@dimen/_50sdp"
-        android:layout_height="wrap_content">
+        android:layout_marginTop="@dimen/_75sdp">
 
         <ImageView
             android:id="@+id/skip"
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_15sdp"
             android:adjustViewBounds="true"
             android:src="@drawable/skip"
-            android:layout_alignParentStart="true"
-            android:layout_marginStart="@dimen/_15sdp"
-            android:visibility="gone"
-            android:layout_centerVertical="true"
-            android:layout_height="wrap_content" />
+            android:visibility="gone" />
 
         <ImageView
             android:id="@+id/nxt"

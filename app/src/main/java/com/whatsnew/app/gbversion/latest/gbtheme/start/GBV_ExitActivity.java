@@ -3,6 +3,7 @@ package com.whatsnew.app.gbversion.latest.gbtheme.start;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Ad_class;
 import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.Constant;
+import com.whatsnew.app.gbversion.latest.gbtheme.AdsIntegration.NativeBanner;
 import com.whatsnew.app.gbversion.latest.gbtheme.R;
 import com.whatsnew.app.gbversion.latest.gbtheme.emojiText.GBV_Texttoemoji;
 
@@ -21,7 +23,7 @@ public class GBV_ExitActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.gbv_activity_exit);
-        Ad_class.all_banner(GBV_ExitActivity.this, (LinearLayout) findViewById(R.id.adView));
+        NativeBanner.NativeBanner((FrameLayout) findViewById(R.id.ll_nativebanneradview), this);
         findViewById(R.id.yes).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

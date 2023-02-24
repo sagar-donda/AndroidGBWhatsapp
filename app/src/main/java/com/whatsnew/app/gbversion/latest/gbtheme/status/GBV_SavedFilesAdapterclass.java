@@ -2,6 +2,7 @@ package com.whatsnew.app.gbversion.latest.gbtheme.status;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
@@ -93,9 +96,36 @@ public class GBV_SavedFilesAdapterclass extends RecyclerView.Adapter<GBV_SavedFi
         viewHolder.delete.setOnClickListener(new View.OnClickListener() {
             @Override 
             public void onClick(View view) {
-                new File(whatsappStatusModelclass.getPath()).delete();
-                GBV_SavedFilesAdapterclass.this.notifyItemRemoved(viewHolder.getAdapterPosition());
-                GBV_SavedFilesAdapterclass.this.list.remove(i);
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+                // Set the message show for the Alert time
+                builder.setMessage("Are you sure, you want to delete ?");
+
+                // Set Alert Title
+                builder.setTitle("Alert !");
+
+                // Set Cancelable false for when the user clicks on the outside the Dialog Box then it will remain show
+                builder.setCancelable(false);
+
+                // Set the positive button with yes name Lambda OnClickListener method is use of DialogInterface interface.
+                builder.setPositiveButton("Yes", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    // When the user click yes button then app will close
+                    new File(whatsappStatusModelclass.getPath()).delete();
+                    GBV_SavedFilesAdapterclass.this.notifyItemRemoved(viewHolder.getAdapterPosition());
+                    GBV_SavedFilesAdapterclass.this.list.remove(i);
+                });
+
+                // Set the Negative button with No name Lambda OnClickListener method is use of DialogInterface interface.
+                builder.setNegativeButton("No", (DialogInterface.OnClickListener) (dialog, which) -> {
+                    // If user click no then dialog box is canceled.
+                    dialog.cancel();
+                });
+
+                // Create the Alert dialog
+                AlertDialog alertDialog = builder.create();
+                // Show the Alert Dialog box
+                alertDialog.show();
             }
         });
         viewHolder.share.setOnClickListener(new View.OnClickListener() {
